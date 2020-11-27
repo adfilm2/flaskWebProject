@@ -25,6 +25,11 @@ def intro():
 def q1():
     return render_template('question1.html')
 
+@app.route('/q2')
+def q2():
+    return render_template('question2.html')
+
+
 @app.route('/q3')
 def q3():
     return render_template('question3.html')

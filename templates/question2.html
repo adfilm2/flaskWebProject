@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+
+<body>
+    <div class="container q2back">
+        <img id="q" src="{{ url_for('static',filename='Q2.png')}}">
+        <h1>Upload<br>Your Photo.</h1>
+        <p id="content">당신의 사진을 업로드하세요</p>
+        <div class="textdiv">
+            <input type="file" placeholder="TEXT 입력">
+            <img src="{{url_for('static', filename='lense.png')}}">
+        </div>
+        <a href="/q3"><img id="nextBtn" src="{{url_for('static',filename='right.png')}}"></a>
+
+    </div>
+
+   
+</body>
+
+</html>

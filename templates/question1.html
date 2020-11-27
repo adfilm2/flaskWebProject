@@ -2,16 +2,36 @@
 <html lang="en">
 
 <head>
+    <style type='text/css'>
+        .q1back{
+    background-image: url("../static/Q1back.png") no-repeat center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+}
+    </style>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Title</title>
+    
 </head>
 
 <body>
-    question 1
+    <div class="container q1back">
+        <img id="q" src="{{ url_for('static',filename='Q1.png')}}">
+        <h1>Enter your<br>'First Name'.</h1>
+        <p id="content">당신의 이름을 입력하세요</p>
+        <div class="textdiv">
+            <input type="text" placeholder="이름 입력">
+            <img src="{{url_for('static', filename='lense.png')}}">
+        </div>
+
+        <a href="/q2"><img id="nextBtn" src="{{url_for('static',filename='right.png')}}"></a>
+    </div>
 
 
 </body>

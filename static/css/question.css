@@ -7,6 +7,16 @@
     left: 0;
     font-size: 50px;
 }
+.q1back{
+    background-image: url('../Q1back.png');
+}
+.q2back{
+    background-image: url('../Q2back.png');
+    background-size: cover;
+}
+.q3back{
+    background-image: url('../Q3back.png');
+}
 /* 공통 */
 
 h1{
@@ -46,3 +56,6 @@ p{
 .textdiv > img {
     width: 55px;
 }
+
+
+
