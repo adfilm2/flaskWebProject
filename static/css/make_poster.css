@@ -1,0 +1,12 @@
+.canvas{
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: auto;
+    max-width: fit-content;
+    border: black solid 1px;
+}
+
+.movable{
+    cursor: move;
+    width: 100px;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Future is Women</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/make_poster.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+</head>
+
+<body>
+    <div id="canvas">
+        <img src="{{ url_for('static', filename='background.png') }}">
+        <img class="movable" src="{{ url_for('static', filename='rabbit.png') }}">
+        <img class="movable" src="{{ url_for('static', filename='rabbit.png') }}">
+    </div>
+    <button id="save"> S A V E </button>
+
+
+</body>
+
+<script>
+    var zidx = 10;
+    $(".movable").draggable({
+        containment: 'parent'
+    }).mousedown(function () {
+        $(this).css('z-index', zidx)
+        zidx++
+    });
+
+    $('#save').click(function () {
+        capture($('#canvas'))
+    })
+
+    function capture(div){
+        div = div[0]
+        html2canvas(div).then(function(canvas){
+            var image = canvas.toDataURL()
+            downloadURI(image, "imagetest.png")
+        })
+    }
+
+    function downloadURI(uri, name){
+        var link = document.createElement("a")
+        link.download = name
+        link.href = uri
+        document.body.appendChild(link)
+        link.click()
+    }
+    
+
+    
+
+
+
+
+
+</script>
+
+</html>

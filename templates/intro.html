@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/intro_poster.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-1 left">로고</div>
+        <div class="col-xs -10"></div>
+        <div class="col-xs-1 right">메뉴</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 block" id="intro_title">What Kind Of Grandma </br> Do You Want To Be?</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-7 inline" id="intro_content">text texttext texttext texttext texttext texttext texttext texttext text text text text text text text text text text text</div>
+        <div class="col-lg-1 inline">
+            <a href="/q3"><img src="{{ url_for('static', filename='start.png') }}"></a>
+        </div>
+    </div>
+    <div class="row"></div>
+</div>
+</body>
+</html>
