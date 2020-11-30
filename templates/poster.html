@@ -5,54 +5,79 @@
     <meta charset="UTF-8">
     <title>The Future is Women</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/poster.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
 </head>
 
 <body>
-    <div id="canvas">
-        <img src="{{ url_for('static', filename='background.png') }}">
-        <img class="movable" src="{{ url_for('static', filename='rabbit.png') }}">
-        <img class="movable" src="{{ url_for('static', filename='rabbit.png') }}">
-    </div>
-    <button id="save"> S A V E </button>
+    <div class="container">
+        <div id="canvas">
+            <div class="moveable resizable">
+                <img class="m-size" src="{{url_for('static', filename='river.jpg')}}">
+            </div>
+            <div class="moveable">
+                <img class="m-size" src="{{ url_for('static', filename='rabbit.png') }}">
+            </div>
+            <div class="moveable">
+                <img class="m-size" src="{{ url_for('static', filename='rabbit.png') }}">
+            </div>
+        </div>
+        <div id="side">
+            <img id="save" class="btn" src="{{url_for ('static',filename='download.png')}}">
+            <img id="archive" class="btn" src="{{url_for ('static',filename='archive.png')}}">
+        </div>
 
+    </div>
 
 </body>
 
 <script>
     var zidx = 10;
-    $(".movable").draggable({
+
+
+    $(".moveable").draggable({
         containment: 'parent'
     }).mousedown(function () {
         $(this).css('z-index', zidx)
         zidx++
     });
 
+    $( function() {
+    $( ".resizable" ).resizable();
+  } );
+
+
+
     $('#save').click(function () {
         capture($('#canvas'))
     })
 
-    function capture(div){
+    function capture(div) {
         div = div[0]
-        html2canvas(div).then(function(canvas){
+        html2canvas(div).then(function (canvas) {
             var image = canvas.toDataURL()
             downloadURI(image, "imagetest.png")
         })
     }
 
-    function downloadURI(uri, name){
+    function downloadURI(uri, name) {
         var link = document.createElement("a")
         link.download = name
         link.href = uri
         document.body.appendChild(link)
         link.click()
     }
-    
 
-    
+
+
+
 
 
 

@@ -1,12 +1,46 @@
-.canvas{
+#canvas{
+    background-image: url('../background.png');
     background-repeat: no-repeat;
     display: inline-block;
-    background-size: auto;
-    max-width: fit-content;
+    background-size: cover;
+    width: 300px;
+    height: 600px;
     border: black solid 1px;
 }
 
-.movable{
-    cursor: move;
+#side{
+    display: inline;
+    width: fit-content;
+}
+
+.btn{
+    display: block;
+    cursor: pointer;
+    width: 163px;
+}
+
+.m-size {
     width: 100px;
+}
+
+.moveable{
+    cursor: move;
+    width: min-content;
+    
+}
+.resizable{
+  
+    
+}
+
+.container{
+    background-image: url('../posterback.png');
+    background-size: cover;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    font-size: 50px;
 }

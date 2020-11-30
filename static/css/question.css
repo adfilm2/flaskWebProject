@@ -9,6 +9,7 @@
 }
 .q1back{
     background-image: url('../Q1back.png');
+    background-size: cover;
 }
 .q2back{
     background-image: url('../Q2back.png');
@@ -16,6 +17,7 @@
 }
 .q3back{
     background-image: url('../Q3back.png');
+    background-size: cover;
 }
 /* 공통 */
 
@@ -57,5 +59,13 @@ p{
     width: 55px;
 }
 
+.finger{
+    width: 200px;
+    cursor: pointer;
+}
+
+#finishBtn{
+    width: 143px;
+}
 
 

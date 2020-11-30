@@ -17,6 +17,10 @@ def home():
     #posters 받아오기
     return render_template('home.html')
 
+@app.route('/menu')
+def menu():
+    return render_template('menu.html')
+
 @app.route('/intro')
 def intro():
     return render_template('intro.html')
@@ -41,7 +45,7 @@ def getWord():
     print(star)
     return jsonify({'result': 'success', 'list': star})
 
-@app.route('/poster', methods= ['POST'])
+@app.route('/poster')
 def poster():
     #localstorage에 있는 name, wannabe 보냄
     #name, wannabe img 받아와 load
