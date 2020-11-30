@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Title</title>
+
+</head>
+
+<body>
+    <div class="back">
+    <div class="container">
+        <img id="home" src="{{url_for('static',filename='menu-1.png')}}">
+        <div id="home-text">HOME</div>
+        <img id="about" src="{{url_for('static',filename='menu-2.png')}}">
+        <div id="about-text">ABOUT</div>
+        <img id="make" src="{{url_for('static',filename='menu-3.png')}}">
+        <div id="make-text">MAKE POSTER</div>
+        <img id="share" src="{{url_for('static',filename='menu-4.png')}}">
+        <div id="share-text">SHARE STORY</div>
+    </div>
+</div>
+
+</body>
+
+</html>
