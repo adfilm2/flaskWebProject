@@ -19,21 +19,22 @@
 <body>
     <div class="container">
         <div id="canvas">
-            <div class="moveable resizable">
-                <img class="m-size" src="{{url_for('static', filename='river.jpg')}}">
+            <div class="resizable">
+                <!-- <img class="m-size" src="{{url_for('static', filename='river.jpg')}}"> -->
             </div>
-            <div class="moveable">
+            <!-- <div class="moveable">
                 <img class="m-size" src="{{ url_for('static', filename='rabbit.png') }}">
             </div>
             <div class="moveable">
                 <img class="m-size" src="{{ url_for('static', filename='rabbit.png') }}">
-            </div>
+            </div> -->
         </div>
-        <div id="side">
+        <aside id="side">
             <img id="save" class="btn" src="{{url_for ('static',filename='download.png')}}">
             <img id="archive" class="btn" src="{{url_for ('static',filename='archive.png')}}">
-        </div>
+        </aside>
 
+        
     </div>
 
 </body>
@@ -41,16 +42,16 @@
 <script>
     var zidx = 10;
 
-
-    $(".moveable").draggable({
-        containment: 'parent'
-    }).mousedown(function () {
-        $(this).css('z-index', zidx)
-        zidx++
-    });
+    
+    // $(".moveable").draggable({
+    //     containment: 'parent'
+    // }).mousedown(function () {
+    //     $(this).css('z-index', zidx)
+    //     zidx++
+    // });
 
     $( function() {
-    $( ".resizable" ).resizable();
+    $( "#resizable" ).resizable();
   } );
 
 
