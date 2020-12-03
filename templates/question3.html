@@ -33,7 +33,9 @@
         <a href="/poster"><img class="finger" id="finishBtn" src="{{url_for('static',filename='finish.png')}}"></a>
 
         <div id="modal">
-            <img id = "gg" src="{{url_for('static',filename= 'start.png')}}">
+            <h1> SELECT ONE </h1>
+            <p>원하는 형용사를 선택해 주세요.</p>
+            <img id = "gg" src="../static/start.png">
         </div>
     </div>
 
@@ -53,15 +55,16 @@
                     if (response["result"] == "success") {
                         var input = $(this).siblings('input')
                         let msg = response['list'];
+                        var object =""
                         for(var i=0; i<msg.length;i++){
-                            var $imgs = $('<img>')
-                            $imgs.attr('width','100px')
-                            $imgs.src = "{{url_for('static',filename='rabbit.png')}}"
+                            object += "<div class='words'> <img src= '../static/select/select"
+                            object += (i%8 + 1) + ".png'></div>"
                             
-                            $('#gg').insertAfter($imgs).load()
                             console.log(msg[i]['word'])
+                            console.log(object)
                             
                         }
+                        $("#modal").append(object)
                     }
                 }
             });
