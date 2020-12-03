@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
@@ -18,7 +19,7 @@
         <p id="content">나는 OOO한 할머니가 되고 싶어.<br><b>[3가지 영어 형용사]</b>를 입력하세요</p>
         <div class="textdiv">
             <input type="text" placeholder="TEXT 입력">
-            <img onclick="show()" src="{{url_for('static', filename='lense.png')}}">
+            <img src="{{url_for('static', filename='lense.png')}}">
         </div>
         <div class="textdiv">
             <input type="text" placeholder="TEXT 입력">
@@ -31,14 +32,18 @@
         <img class="finger" onclick="history.back()" src="{{url_for('static',filename='left.png')}}">
         <a href="/poster"><img class="finger" id="finishBtn" src="{{url_for('static',filename='finish.png')}}"></a>
 
+        <div id="modal">
+            <img id = "gg" src="{{url_for('static',filename= 'start.png')}}">
+        </div>
     </div>
 
-    <div id="modal">
-        <img src="{{url_for('static',filename= 'start.png')}}">
-    </div>
+    
 
     <script>
         $('.textdiv > img').click(function () {
+            $("#modal").fadeIn(300)
+            $("#modal").css('display','inline')
+            
 
             $.ajax({
                 type: 'GET',
@@ -49,17 +54,20 @@
                         var input = $(this).siblings('input')
                         let msg = response['list'];
                         for(var i=0; i<msg.length;i++){
+                            var $imgs = $('<img>')
+                            $imgs.attr('width','100px')
+                            $imgs.src = "{{url_for('static',filename='rabbit.png')}}"
+                            
+                            $('#gg').insertAfter($imgs).load()
                             console.log(msg[i]['word'])
+                            
                         }
                     }
                 }
             });
         })
 
-        function show(){
-            $("#modal").css("display", "fixed")
-            console.log('show')
-        }
+        
 
     </script>
 </body>
