@@ -32,10 +32,12 @@
         <img class="finger" onclick="history.back()" src="{{url_for('static',filename='left.png')}}">
         <a href="/poster"><img class="finger" id="finishBtn" src="{{url_for('static',filename='finish.png')}}"></a>
 
+        <div id="back"></div>
         <div id="modal">
+            <img id='no' src="../static/no.png"> 
             <h1> SELECT ONE </h1>
             <p>원하는 형용사를 선택해 주세요.</p>
-            <img id = "gg" src="../static/start.png">
+            
         </div>
     </div>
 
@@ -44,9 +46,9 @@
     <script>
         $('.textdiv > img').click(function () {
             $("#modal").fadeIn(300)
+            $("#back").fadeIn(300)
             $("#modal").css('display','inline')
-            
-
+        
             $.ajax({
                 type: 'GET',
                 url: '/q3/list',
@@ -57,8 +59,8 @@
                         let msg = response['list'];
                         var object =""
                         for(var i=0; i<msg.length;i++){
-                            object += "<div class='words'> <img src= '../static/select/select"
-                            object += (i%8 + 1) + ".png'></div>"
+                            object += "<span class='words'> <img src= '../static/select/select"
+                            object += (i%8 + 1) + ".png'></span>"
                             
                             console.log(msg[i]['word'])
                             console.log(object)
@@ -68,6 +70,11 @@
                     }
                 }
             });
+        })
+
+        $('#no, #back').click(function(){
+            $("#modal").fadeOut(300)
+            $("#back").fadeOut(300)
         })
 
         

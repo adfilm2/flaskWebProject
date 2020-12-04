@@ -26,6 +26,10 @@ def insert():
         {"word": "strong", "imgNo": 3},
         {"word": "handsome", "imgNo": 4},
         {"word": "kind", "imgNo": 1},
+        {"word": "high","imgNo":4},
+        {"word": "handsome", "imgNo": 4},
+        {"word": "interesting", "imgNo": 2},
+        {"word": "growing", "imgNo": 2}
 
     ]
     db.wannabe.insert_many(
