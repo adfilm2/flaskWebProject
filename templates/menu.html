@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
@@ -13,18 +14,38 @@
 
 <body>
     <div class="back">
-    <div class="container">
-        <img id="home" src="{{url_for('static',filename='menu-1.png')}}">
-        <div id="home-text">HOME</div>
-        <img id="about" src="{{url_for('static',filename='menu-2.png')}}">
-        <div id="about-text">ABOUT</div>
-        <img id="make" src="{{url_for('static',filename='menu-3.png')}}">
-        <div id="make-text">MAKE POSTER</div>
-        <img id="share" src="{{url_for('static',filename='menu-4.png')}}">
-        <div id="share-text">SHARE STORY</div>
-    </div>
-</div>
+        <div class="container">
+            <img class="menubtn" id="home" src="../static/menu/home.png">
 
+            <img class="menubtn" id="about" src="../static/menu/about.png">
+
+            <img class="menubtn" id="make" src="../static/menu/make.png">
+
+            <img class="menubtn" id="share" src="../static/menu/share.png">
+
+        </div>
+        <img id="menu-finger" src="../static/left.png">
+    </div>
+    <script>
+        $(".menubtn").click(function () {
+            $(this).attr("src", "../static/menu/" + $(this).attr('id') + "_bl.png")
+            switch ($(this).attr('id')) {
+                case "home":
+                    location.href = "/home"
+                    break
+                case "about":
+                    location.href = "/about"
+                    break
+                case "make":
+                    location.href = "/intro"
+                    break
+                case "share":
+                    location.href = "/share"
+
+
+            }
+        })
+    </script>
 </body>
 
 </html>
