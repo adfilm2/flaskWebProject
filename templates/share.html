@@ -15,12 +15,12 @@
 <body>
     <img id="logo" src="../static/logo.png">
     <img id="menu" src="../static/menu/menu.png">
-    <div id="container">
+    <div id="container" >
         <h1>Share<br>Your Future</h1>
         <p>당신은 어떤 할머니가 되고 싶나요?<br>당신의 이야기를 들려주세요.</p>
         <input type="text" placeholder="TEXT 입력"> <img id="submit" src="../static/submit@2x.png">
         <div id="bubbles">
-            
+
         </div>
     </div>
     <script>
@@ -30,23 +30,36 @@
             data: {},
             success: function (response) {
                 if (response["result"] == "success") {
-                    let list = response['list']
-                    var object = ""
+                    let list = response['list'];
+                    var object = "";
                     for (var i = 0; i < list.length; i++) {
-                        object += "<div class='bubble'> <div class='bubble-text'>"
-                        object += list[i]['story']
-                        object += "</div></div>"
+                        object += "<div class='bubble'> <div class='bubble-text'>";
+                        object += list[i]['story'];
+                        object += "</div></div>";
                     }
-                    
-                    $("#bubbles").append(object)
-                    
+
+                    $("#bubbles").append(object);
+
                 }
-                
-                console.log(-($('.bubble-img').height()/2))
+
             }
+
+        });
+        $(document).on('click', '.bubble-text', function () {
+            console.log('bubble click');
+            console.log($(this).parent('div'));
+
+            $('.bubble').removeClass('clicked');
+            $(this).parent('div').addClass('clicked');
+            $('.bubble,h1,p,input,img').not('.clicked').animate({
+                opacity: 0.4},200)
+            $('.clicked').animate({
+                opacity: 1},200)
+            
             
         })
-        
+
+
     </script>
 </body>
 
