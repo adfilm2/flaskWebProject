@@ -35,6 +35,10 @@ def insert():
     db.wannabe.insert_many(
         wordlist
     )
+    stories = [
+        {"story": "너무재밋다"},{"story":"할무니"}, {"story":"부자되세요"},{"story":"부자되세요를레이히리릴요요오로로리리ㅣ리릴리헤헤헷"}
+    ]
+    db.story.insert_many(stories)
 
 
 insert()

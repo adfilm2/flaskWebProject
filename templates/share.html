@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/share.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Title</title>
+
+</head>
+
+<body>
+    <img id="logo" src="../static/logo.png">
+    <img id="menu" src="../static/menu/menu.png">
+    <div id="container">
+        <h1>Share<br>Your Future</h1>
+        <p>당신은 어떤 할머니가 되고 싶나요?<br>당신의 이야기를 들려주세요.</p>
+        <input type="text" placeholder="TEXT 입력"> <img id="submit" src="../static/submit@2x.png">
+        <div id="bubbles">
+            
+        </div>
+    </div>
+    <script>
+        $.ajax({
+            type: 'GET',
+            url: '/share/story',
+            data: {},
+            success: function (response) {
+                if (response["result"] == "success") {
+                    let list = response['list']
+                    var object = ""
+                    for (var i = 0; i < list.length; i++) {
+                        object += "<div class='bubble'> <div class='bubble-text'>"
+                        object += list[i]['story']
+                        object += "</div></div>"
+                    }
+                    
+                    $("#bubbles").append(object)
+                    
+                }
+                
+                console.log(-($('.bubble-img').height()/2))
+            }
+            
+        })
+        
+    </script>
+</body>
+
+</html>

@@ -58,12 +58,19 @@ def save():
     #홈화면으로 redirect
     return
 
-@app.route('/share', methods = ['GET'])
+@app.route('/share')
 def share():
     #story list 불러오기
     return render_template('share.html')
 
-@app.route('/share/story', methods = ['POST'])
+@app.route('/share/story', methods=['GET'])
+def getStory():
+    print('getStory()')
+    story = list(db.story.find({},{'_id':False}))
+    return jsonify({'result':'success', 'list':story})
+
+
+@app.route('/share/newstory', methods = ['POST'])
 def newStory():
     #new story 추가
     return 
