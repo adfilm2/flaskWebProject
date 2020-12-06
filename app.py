@@ -17,6 +17,13 @@ def home():
     #posters 받아오기
     return render_template('home.html')
 
+@app.route('/home/poster', methods=['GET'])
+def getPoster():
+    # print('getPoster()')
+    # posters = list(db.poster.find({},{'_id':False}))
+    
+    return jsonify({'result':'success', 'list':['성공성공','둘다성공']})
+
 @app.route('/menu')
 def menu():
     return render_template('menu.html')

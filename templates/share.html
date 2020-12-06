@@ -51,12 +51,17 @@
 
             $('.bubble').removeClass('clicked');
             $(this).parent('div').addClass('clicked');
-            $('.bubble,h1,p,input,img').not('.clicked').animate({
-                opacity: 0.4},200)
+            $('.bubble,h1,p,input,#submit').not('.clicked').animate({
+                opacity: 0.33},200)
             $('.clicked').animate({
                 opacity: 1},200)
             
             
+        })
+
+        $('body').click(function(){
+            $('.bubble,h1,p,input,#submit').animate({
+                opacity: 1},200)
         })
 
 

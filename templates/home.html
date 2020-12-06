@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Title</title>
 </head>
 
 <body>
-    
+    <div class="container">
+        <img id="logo" src="../static/logo.png">
+        <img id="menu" src="../static/menu/menu.png">
+        <img id='title' src="../static/hometitle@3x.png">
+        <div id="poster-box">
+            
+        </div>
+    </div>
 
+    <script>
+        $.ajax({
+            type: 'GET',
+            url: '/home/poster',
+            data: {},
+            success: function (response) {
+                if (response["result"] == "success") {
+                    console.log(response['list'])
+                }
+            }
 
-    
-
-
+        })
+    </script>
 </body>
 
 </html>
