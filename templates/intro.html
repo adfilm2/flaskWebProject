@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/intro.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <title>Title</title>
 </head>
+
 <body>
-<div class="container-fluid">
-    <img id="logo" src="../static/logo.png">
-    <img id="menu" src="../static/menu/menu.png">
-    <div class="row">
-        <div class="col-sm-12 block" id="intro_title">What Kind Of Grandma </br> Do You Want To Be?</div>
+    <a href="/home"><img id="logo" src="../static/logo.png"></a>
+    <a href="/menu"><img id="menu" src="../static/menu/menu.png"></a>
+    <div class="container">
+        
+
+
+
+
+
+        <a href="/q1"><img src="{{ url_for('static', filename='start.png') }}"></a>
+
     </div>
-    <div class="row">
-        <div class="col-lg-7 inline" id="intro_content">text texttext texttext texttext texttext texttext texttext texttext text text text text text text text text text text text</div>
-        <div class="col-lg-1 inline">
-            <a href="/q1"><img src="{{ url_for('static', filename='start.png') }}"></a>
-        </div>
+
     </div>
-    <div class="row"></div>
-</div>
 </body>
+
 </html>

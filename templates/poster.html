@@ -5,55 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>The Future is Women</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/poster.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/poster.css') }}">
+    <!-- 부트스트랩 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jquery ui  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-   
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <!-- html2canvas -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- jquery mobile -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
 </head>
 
 <body>
+    <a href="/menu"><img id="menu" src="../static/menu/menu.png"></a>
     <div class="container">
-        <div id="canvas">
-            <div class="resizable">
-                <!-- <img class="m-size" src="{{url_for('static', filename='river.jpg')}}"> -->
+        <div><img id="help" src="../static/poster-help.png"> </div>
+        
+            <div id="canvas"></div>
+            <div id="button-tab">
+                <img id="save" class="btn" src="{{url_for ('static',filename='download.png')}}">
+                <img id="archive" class="btn" src="{{url_for ('static',filename='archive.png')}}">
             </div>
-            <!-- <div class="moveable">
-                <img class="m-size" src="{{ url_for('static', filename='rabbit.png') }}">
-            </div>
-            <div class="moveable">
-                <img class="m-size" src="{{ url_for('static', filename='rabbit.png') }}">
-            </div> -->
         </div>
-        <aside id="side">
-            <img id="save" class="btn" src="{{url_for ('static',filename='download.png')}}">
-            <img id="archive" class="btn" src="{{url_for ('static',filename='archive.png')}}">
-        </aside>
-
+        
         
     </div>
+   
+
 
 </body>
 
 <script>
     var zidx = 10;
 
-    
-    // $(".moveable").draggable({
-    //     containment: 'parent'
-    // }).mousedown(function () {
-    //     $(this).css('z-index', zidx)
-    //     zidx++
-    // });
 
-    $( function() {
-    $( "#resizable" ).resizable();
-  } );
+    $(".moveable").draggable({
+        containment: 'parent'
+    }).mousedown(function () {
+        $(this).css('z-index', zidx)
+        zidx++
+    });
+
+    $(function () {
+        $("#resizable").resizable();
+    });
 
 
 

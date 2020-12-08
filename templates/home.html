@@ -13,8 +13,8 @@
 
 <body>
     <div class="container">
-        <img id="logo" src="../static/logo.png">
-        <img id="menu" src="../static/menu/menu.png">
+        <a href="/home"><img id="logo" src="../static/logo.png"></a>
+    <a href="/menu"><img id="menu" src="../static/menu/menu.png"></a>
         <img id='title' src="../static/hometitle@3x.png">
         <div id="poster-box">
             
@@ -22,6 +22,7 @@
     </div>
 
     <script>
+        
         $.ajax({
             type: 'GET',
             url: '/home/poster',

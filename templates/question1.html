@@ -22,10 +22,28 @@
         </div>
         <div id='bottom-container'>
             <img class="finger" onclick="history.back()" src="{{url_for('static',filename='left.png')}}">
-            <a href="/q2"><img class="finger" src="{{url_for('static',filename='right.png')}}"></a>
+            <img id="next"class="finger" src="{{url_for('static',filename='right.png')}}">
         </div>
     </div>
 
+    <script>
+        $('#next').click(function(){
+            userName = $('input').val()
+            $.ajax({
+                type:"GET",
+                url:'/q1/name',
+                data:{name: userName},
+                success: function(response){
+                    if(response["result"]=="success"){
+                        alert(response["msg"])
+                    }
+                }
+            })
+            // let name = $('input').val()
+            // window.localStorage.setItem("name",name)
+            location.href ="/q2?"+ userName
+        })
+    </script>
 
 </body>
 
