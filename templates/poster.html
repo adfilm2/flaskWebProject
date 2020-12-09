@@ -65,7 +65,8 @@
         div = div[0]
         html2canvas(div).then(function (canvas) {
             var image = canvas.toDataURL()
-            downloadURI(image, "imagetest.png")
+            let name = ""
+            downloadURI(image, "future-"+name+".png")
         })
     }
 

@@ -14,7 +14,7 @@ def index():
 
 @app.route('/home', methods= ['GET'])
 def home():
-    #posters 받아오기
+    
     return render_template('home.html')
 
 @app.route('/home/poster', methods=['GET'])
@@ -35,6 +35,14 @@ def intro():
 @app.route('/q1')
 def q1():
     return render_template('question1.html')
+
+
+# q1 test
+@app.route('/q1/name', methods=['GET'])
+def name():
+    name = request.form['name']
+    db.user.insert_one({'name': name })
+    return jsonify({'result': 'success','msg':'성공'})
 
 @app.route('/q2')
 def q2():

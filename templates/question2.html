@@ -17,7 +17,7 @@
         <h1>Upload<br>Your Photo.</h1>
         <p id="content">당신의 사진을 업로드하세요</p>
         <div class="textdiv">
-            <input type="file" placeholder="TEXT 입력">
+            <input type="file"name="file" accept="image/png,image/jpg,image/jpeg" placeholder="TEXT 입력">
             <img src="{{url_for('static', filename='lense.png')}}">
         </div>
         <div id='bottom-container'>
@@ -26,7 +26,21 @@
         </div>
     </div>
 
+    <script>
+        $('input').change(function () {
+            let image = $('input')[0].files[0]
+            var reader = new FileReader()
+            reader.readAsDataURL(image)
 
+            reader.onload = function(){
+                sessionStorage.setItem('img-src',reader.result)
+                sessionStorage.setItem('img',image)
+            }
+            
+            
+        })
+
+    </script>
 </body>
 
 </html>
