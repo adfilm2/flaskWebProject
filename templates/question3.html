@@ -14,28 +14,28 @@
 
 <body>
     <div class="container q3back">
-        <img id="q" src="{{ url_for('static',filename='Q3.png')}}">
+        <img id="q" src="../static/question/Q3.png">
         <h1>I Want To Be<br>A [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>Grandmother.</h1>
         <p id="content">나는 OOO한 할머니가 되고 싶어.<br><b>[3가지 영어 형용사]</b>를 입력하세요</p>
         <div class="textdiv">
             <input id = '1'type="text" placeholder="TEXT 입력">
-            <img src="{{url_for('static', filename='lense.png')}}">
+            <img src="../static/question/lense.png">
         </div>
         <div class="textdiv">
             <input id = '2'type="text" placeholder="TEXT 입력">
-            <img src="{{url_for('static', filename='lense.png')}}">
+            <img src="../static/question/lense.png">
         </div>
         <div class="textdiv">
             <input id = '3'type="text" placeholder="TEXT 입력">
-            <img  src="{{url_for('static', filename='lense.png')}}">
+            <img  src="../static/question/lense.png">
         </div>
         <div id='bottom-container'>
-            <img class="finger" onclick="history.back()" src="{{url_for('static',filename='left.png')}}">
-            <a href="/poster"><img class="finger" id="finishBtn" src="{{url_for('static',filename='finish.png')}}"></a>
+            <img class="finger" onclick="history.back()" src="../static/question/left.png">
+            <img class="finger" id="finishBtn" src="../static/question/finish.png">
         </div>
         <div id="back"></div>
         <div id="modal">
-            <img id='no' src="../static/no.png">
+            <img id='no' src="../static/question/no.png">
             <h1>SELECT ONE</h1>
             <p>원하는 형용사를 선택해 주세요.</p>
             <div id='modal-container'></div>
@@ -75,16 +75,11 @@
 
         $('.textdiv > img').click(function () {
             var thisId = $(this).siblings('input').attr('id')
-            
 
             $('.words').removeClass("clicked")
             $("#modal").attr('name',thisId)
             $("#modal, #back").fadeIn(300)
             $("#modal").css('display', 'inline')
-            
-
-
-
             
         })
 
@@ -110,6 +105,16 @@
 
         $(document).on('click','#no, #back', function(){
             dissmissModal()
+        })
+
+        $(document).on('click','#finishBtn', function(){
+
+            sessionStorage.word1 = $('#1').val()
+            sessionStorage.word2 = $('#2').val()
+            sessionStorage.word3 = $('#3').val()
+
+
+            location.href = "/poster"
         })
 
        

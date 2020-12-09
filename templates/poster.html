@@ -22,14 +22,14 @@
 </head>
 
 <body>
-    <a href="/menu"><img id="menu" src="../static/menu/menu.png"></a>
+    <a href="/menu"><img id="menu" src="../static/others/menu.png"></a>
     <div class="container">
-        <div><img id="help" src="../static/poster-help.png"> </div>
+        <div><img id="help" src="../static/question/poster-help.png"> </div>
         
             <div id="canvas"></div>
             <div id="button-tab">
-                <img id="save" class="btn" src="{{url_for ('static',filename='download.png')}}">
-                <img id="archive" class="btn" src="{{url_for ('static',filename='archive.png')}}">
+                <img id="save" class="btn" src="../static/question/download.png">
+                <img id="archive" class="btn" src="../static/question/archive.png">
             </div>
         </div>
         
@@ -41,8 +41,24 @@
 </body>
 
 <script>
-    var zidx = 10;
 
+    
+    var hh = sessionStorage.getItem('word1')
+    
+    $.ajax({
+        type:'GET',
+        url:'/submit',
+        data:{ word1: "hh" },
+        success: function (response){
+            if(response["result"] =='success'){
+                console.log(response["words"])
+            }
+        }
+    })
+    
+    
+    
+    var zidx = 10;
 
     $(".moveable").draggable({
         containment: 'parent'

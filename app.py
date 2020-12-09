@@ -41,7 +41,7 @@ def q1():
 @app.route('/q1/name', methods=['GET'])
 def name():
     name = request.form['name']
-    db.user.insert_one({'name': name })
+    db.user.insert_one({name: name })
     return jsonify({'result': 'success','msg':'성공'})
 
 @app.route('/q2')
@@ -59,6 +59,15 @@ def getWord():
     star = list(db.wannabe.find({},{'_id':False, 'word':True}))
     print(star)
     return jsonify({'result': 'success', 'list': star})
+
+@app.route('/submit', methods= ['GET'])
+def submit():
+    word1 = request.form['word1']
+    # find1 = db.wannabe.find({"word": word1},{'_id':False})
+    print(word1)
+
+    return jsonify({'result':'success','words': "find1"})
+
 
 @app.route('/poster')
 def poster():
