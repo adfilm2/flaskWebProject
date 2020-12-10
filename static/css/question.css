@@ -1,0 +1,212 @@
+body{
+    font-size: 10px;
+}
+
+.container{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    font-size: 50px;
+}
+.q1back{
+    background-image: url('../back/Q1back.png');
+    background-size: cover;
+}
+.q2back{
+    background-image: url('../back/Q2back.png');
+    background-size: cover;
+}
+.q3back{
+    background-image: url('../back/Q3back.png');
+    background-size: cover;
+}
+/* 공통 */
+
+h1{
+    font-size: 35px;
+    margin: 0;
+}
+p{
+    font-size: 20px;
+}
+
+/* 공통 */
+
+
+#q{
+    width: 72px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+#content{
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+.textdiv{
+    vertical-align: middle;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.textdiv > input{
+    display: inline-block;
+    vertical-align: middle;
+}
+.textdiv > img {
+    width: 1em;
+    vertical-align: middle
+}
+
+input{
+    border: black 4px solid;
+    height: 42px;
+    width: 150px;
+    border-radius: 28px;
+    padding-left: 20px;
+}
+
+.finger{
+    width: 180px;
+    cursor: pointer;
+    float: left;
+}
+
+#finishBtn{
+    width: 143px;
+    top: 10px;
+    float: right;
+}
+#back{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+#modal{
+    background-image: url('../back/modalback.png');
+    background-size: cover;
+    display: none;
+    color: white;
+    position: fixed;
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    min-width: 730px;
+    height: 80%;
+    margin-left: 0;
+    margin-top: 0;
+    overflow: auto;
+    justify-content: center;
+    /* min-width: 300px; */
+}
+
+#modal>h1{
+    font-family: 'digestive';
+    text-align: center;
+    font-size: 50px;
+    margin-top: 56px;
+    margin-bottom: 25px;
+}
+
+#modal> p{
+    font-size: 16px;
+}
+
+#no{
+    width: 23px;
+    float: right;
+    margin: 20px;
+}
+#modal-container{
+    margin: 20px 15px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#bottom-container{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.words{
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 150px;
+    vertical-align: middle;
+    display: table;
+    position: relative;
+    text-align: center;
+    margin: 10px;
+}
+
+.word-text{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.clicked{
+    -webkit-filter: invert(12%) sepia(21%) saturate(4662%) hue-rotate(58deg) brightness(99%) contrast(105%);
+    filter: invert(12%) sepia(21%) saturate(4662%) hue-rotate(58deg) brightness(99%) contrast(105%);
+}
+
+@media (max-width: 768px) {
+    #modal {
+        position: fixed;
+        margin : 0;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+       
+    }
+    #modal>h1{ 
+        text-align: center;
+        font-size: 40px;}
+
+    
+    #q{
+        width: 50px;
+        margin-top: 1em;
+        margin-bottom: 0.6em;
+    }
+    h1{
+        font-size: 30px;
+    }
+    p{
+        font-size: 15px;
+    }
+    .textdiv > img{
+        width: 30px;
+    }
+    span > img {
+        width: 145px;
+    }
+    #finishBtn{
+        width: 85px;
+        float: right;
+    }
+    .finger{
+        width: 113px;
+        float: left;
+    }
+    #bottom-container{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+ }
+

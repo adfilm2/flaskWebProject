@@ -1,0 +1,78 @@
+body{
+    /* text-align: center; */
+    background-attachment: fixed;
+    background-image: url('../back/shareback.png');
+    background-size: cover;
+    color: white;
+}
+
+h1{
+    padding-top: 100px;
+    margin-top: 0;
+    font-family: 'digestive';
+    font-size: 100px;
+}
+p{ font-size: 21px ;}
+
+
+#container{
+    display: table;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
+
+input{
+    width: 300px;
+    height: 48px;
+    padding-left: 20px;
+    border-radius: 29px;
+    color: #bce0fd;
+    border: #bce0fd 2px solid;
+    vertical-align:middle; 
+}
+
+#submit{
+    width: 48px;
+    vertical-align:middle; 
+    margin-left: 5px;
+}
+
+
+
+#bubbles{
+    margin-top: 130px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 5%;
+    padding-left: 5%;
+    max-width: 90%;
+
+}
+
+.bubble{
+    display: table;
+    position: relative;
+    background-image: url(../others/share-bubble.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 450px;
+    height: 230px;
+    color: black;
+    text-align: center;
+    overflow: scroll;
+    /* top: -118px;
+    left: -225px; */
+}
+.bubble-text{
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 15%;
+    padding-right: 20%;
+}
+
+.clicked{
+    
+}

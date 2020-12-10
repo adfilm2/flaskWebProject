@@ -1,0 +1,42 @@
+body{
+    text-align: center;
+    background-attachment: fixed;
+    background-image: url('../back/posterback.png');
+    background-size: cover;
+}
+
+#about{
+    width: 113px;
+    margin-top: 145px;
+}
+h1{
+    font-family: 'digestive';
+    font-size: 100px;
+}
+
+
+.container{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#hand1{
+    width: 466px;
+    position: absolute;
+    top: 486px;
+    right: 0;
+}
+
+#hand2{
+    width: 600px;
+    position: absolute;
+    left: 0;
+}
+#eng{
+    font-size: 20px;
+}
+#kor{
+    font-size: 20px;
+    margin-top: 460px;
+}
