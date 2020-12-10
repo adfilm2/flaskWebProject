@@ -18,16 +18,16 @@
         <h1>I Want To Be<br>A [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>Grandmother.</h1>
         <p id="content">나는 OOO한 할머니가 되고 싶어.<br><b>[3가지 영어 형용사]</b>를 입력하세요</p>
         <div class="textdiv">
-            <input id = '1'type="text" placeholder="TEXT 입력">
+            <input id='1' type="text" placeholder="TEXT 입력">
             <img src="../static/question/lense.png">
         </div>
         <div class="textdiv">
-            <input id = '2'type="text" placeholder="TEXT 입력">
+            <input id='2' type="text" placeholder="TEXT 입력">
             <img src="../static/question/lense.png">
         </div>
         <div class="textdiv">
-            <input id = '3'type="text" placeholder="TEXT 입력">
-            <img  src="../static/question/lense.png">
+            <input id='3' type="text" placeholder="TEXT 입력">
+            <img src="../static/question/lense.png">
         </div>
         <div id='bottom-container'>
             <img class="finger" onclick="history.back()" src="../static/question/left.png">
@@ -42,82 +42,110 @@
         </div>
     </div>
 
-    
+
 
 
 
     <script>
         var nowInput = ""
 
+
         $.ajax({
-                type: 'GET',
-                url: '/q3/list',
-                data: {},
-                success: function (response) {
-                    if (response["result"] == "success") {
-                        
-                        
-                        var input = $(this).siblings('input')
-                        let msg = response['list'];
-                        var object = ""
-                        for (var i = 0; i < msg.length; i++) {
-                            object += "<div class='words'  style= 'background-image:"
-                            object+= "url(../static/select/select"
-                            object += (i % 8 + 1) + ".png);'><div class='word-text' name=''>"+msg[i].word+"</div></div>"
+            type: 'GET',
+            url: '/q3/list',
+            data: {},
+            success: function (response) {
+                if (response["result"] == "success") {
 
-                            
 
-                        }
-                        $("#modal-container").append(object)
+                    var input = $(this).siblings('input')
+                    let msg = response['list'];
+                    var object = ""
+                    for (var i = 0; i < msg.length; i++) {
+                        object += "<div class='words'  style= 'background-image:"
+                        object += "url(../static/select/select"
+                        object += (i % 8 + 1) + ".png);'><div class='word-text' name=''>" + msg[i].word + "</div></div>"
+
+
+
                     }
+                    $("#modal-container").append(object)
                 }
-            });
+            }
+        });
+
+
 
         $('.textdiv > img').click(function () {
             var thisId = $(this).siblings('input').attr('id')
 
             $('.words').removeClass("clicked")
-            $("#modal").attr('name',thisId)
+            $("#modal").attr('name', thisId)
             $("#modal, #back").fadeIn(300)
             $("#modal").css('display', 'inline')
-            
+
         })
 
-        
 
-        function dissmissModal(){
+
+        function dissmissModal() {
             $("#modal,#back").fadeOut(300)
         }
 
-        
+
 
         $(document).on('click', '.word-text', function () {
-            
+
             var inputNum = $("#modal").attr('name')
             var selected = $(this).text()
-            console.log("clicked "+ selected+" in "+inputNum) 
-            
+            console.log("clicked " + selected + " in " + inputNum)
+
             $(this).parent('div').addClass('clicked')
-            
+
             dissmissModal()
-            $('#'+inputNum).val(selected)
+            $('#' + inputNum).val(selected)
         })
 
-        $(document).on('click','#no, #back', function(){
+        $(document).on('click', '#no, #back', function () {
             dissmissModal()
         })
 
-        $(document).on('click','#finishBtn', function(){
+        $(document).on('click', '#finishBtn', function () {
 
-            sessionStorage.word1 = $('#1').val()
-            sessionStorage.word2 = $('#2').val()
-            sessionStorage.word3 = $('#3').val()
+            let word1 = $('#1').val()
+            let word2 = $('#2').val()
+            let word3 = $('#3').val()
+
+
+            console.log(word1)
+            console.log(word2)
+            console.log(word3)
+
+            $.ajax({
+                type: 'POST',
+                url: '/submit',
+                data: { 'word1': word1 , 'word2':word2,'word3':word3 },
+                success: function (response) {
+                    if (response["result"] == "success") {
+                        
+                        words = response['words']
+                        console.log(words)
+                        console.log(typeof(words))
+                        console.log(";;"+words[0]+words[1]+words[2])
+                        sessionStorage.setItem('path1',words[0])
+                        sessionStorage.setItem('path2',words[1])
+                        sessionStorage.setItem('path3',words[2])
+                        
+                    }
+                }
+            })
+
 
 
             location.href = "/poster"
         })
 
-       
+
 
 
 

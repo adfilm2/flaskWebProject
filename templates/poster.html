@@ -46,27 +46,10 @@
 </body>
 
 <script>
-    $(document).ready(function () {
-        let word1 = sessionStorage.getItem('word1')
-        let word2 = sessionStorage.getItem('word2')
-        let word3 = sessionStorage.getItem('word3')
-        console.log(word1)
-        console.log(word2)
-        console.log(word3)
+    
 
-        $.ajax({
-            type: 'GET',
-            url: '/submit',
-            data: { word1: "hh" },
-            success: function (response) {
-                if (response["result"] == 'success') {
-                    console.log(response["words"])
-                }
-            }
-        })
-    })
 
-    var hh = sessionStorage.getItem('word1')
+    
 
 
 

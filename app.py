@@ -60,13 +60,19 @@ def getWord():
     print(star)
     return jsonify({'result': 'success', 'list': star})
 
-@app.route('/submit', methods= ['GET'])
+@app.route('/submit', methods= ['POST'])
 def submit():
-    word1 = request.form['word1']
-    # find1 = db.wannabe.find({"word": word1},{'_id':False})
-    
+    recword1 = request.form['word1']
+    recword2 = request.form['word2']
+    recword3 = request.form['word3']
 
-    return jsonify({'result':'success','words': wor1})
+    find1 = list(db.wannabe.find({"word":recword1}))
+    find2 = list(db.wannabe.find({"word":recword2}))
+    find3 = list(db.wannabe.find({"word":recword3}))
+    # find1 = db.wannabe.find({"word": word1},{'_id':False})
+    list1 = [ find1[0]['path'], find2[0]['path'], find3[0]['path'] ]
+    print(find1)
+    return jsonify({'result':'success','words': list1})
 
 
 @app.route('/poster')

@@ -18,18 +18,18 @@ db = client.anti
 def insert():
     db.wannabe.delete_many({})
     wordlist = [
-        {"word": "cool", "imgNo": 1},
-        {"word": "gorgeous", "imgNo": 1},
-        {"word": "awesome", "imgNo": 1},
-        {"word": "rich", "imgNo": 2},
-        {"word": "elegant", "imgNo": 1},
-        {"word": "strong", "imgNo": 3},
-        {"word": "handsome", "imgNo": 4},
-        {"word": "kind", "imgNo": 1},
-        {"word": "high","imgNo":4},
-        {"word": "handsome", "imgNo": 4},
-        {"word": "interesting", "imgNo": 2},
-        {"word": "growing", "imgNo": 2}
+        {"word": "fair", "path": "../static/mapping/Fair.png"},
+        {"word": "faithful", "path": "../static/mapping/Faithful.png"},
+        {"word": "friendly", "path": "../static/mapping/Friendly.png"},
+        {"word": "rich", "path": "../static/mapping/Rich.png"},
+        {"word": "great", "path": "../static/mapping/Great.png"},
+        {"word": "hip", "path": "../static/mapping/Hip.png"},
+        {"word": "be loved", "path": "../static/mapping/BeLoved.png"},
+        {"word": "loving", "path": "../static/mapping/Loving.png"},
+        {"word": "passionate","path":"../static/mapping/Passionate.png"},
+        {"word": "peaceful", "path": "../static/mapping/Peachful.png"},
+        {"word": "strong", "path": "../static/mapping/Strong.png"}
+        
 
     ]
     db.wannabe.insert_many(
