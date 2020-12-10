@@ -164,6 +164,19 @@ input{
     filter: invert(12%) sepia(21%) saturate(4662%) hue-rotate(58deg) brightness(99%) contrast(105%);
 }
 
+
+/* 4 */
+.color-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+
 @media (max-width: 768px) {
     #modal {
         position: fixed;

@@ -51,16 +51,14 @@
         });
         
         $(document).on('click', '.bubble-text', function () {
-            console.log('bubble click');
-            console.log($(this).parent('div'));
-
-            $('.bubble').removeClass('clicked');
+            
+            $('.clicked').removeClass('clicked');
             $(this).parent('div').addClass('clicked');
             $('.bubble,h1,p,input,#submit').not('.clicked').animate({
                 opacity: 0.33},200)
             $('.clicked').animate({
                 opacity: 1},200)
-            
+                
             
         })
         $(document).on('click','#submit', function(){
@@ -78,9 +76,12 @@
             })
         })
 
-        $('body').click(function(){
-            $('.bubble,h1,p,input,#submit').animate({
+        $('#container').click(function(e){
+            if(e.target.className != "bubble-text"){
+                $('.bubble,h1,p,input,#submit').animate({
                 opacity: 1},200)
+            }
+            
         })
 
 

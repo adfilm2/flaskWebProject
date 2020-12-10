@@ -60,6 +60,10 @@ def getWord():
     print(star)
     return jsonify({'result': 'success', 'list': star})
 
+@app.route('/q4')
+def q4():
+    return render_template('question4.html')
+
 @app.route('/submit', methods= ['POST'])
 def submit():
     recword1 = request.form['word1']

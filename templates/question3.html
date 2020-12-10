@@ -31,7 +31,7 @@
         </div>
         <div id='bottom-container'>
             <img class="finger" onclick="history.back()" src="../static/question/left.png">
-            <img class="finger" id="finishBtn" src="../static/question/finish.png">
+            <img class="finger" id="next" src="../static/question/right.png">
         </div>
         <div id="back"></div>
         <div id="modal">
@@ -110,7 +110,7 @@
             dissmissModal()
         })
 
-        $(document).on('click', '#finishBtn', function () {
+        $(document).on('click', '#next', function () {
 
             let word1 = $('#1').val()
             let word2 = $('#2').val()
@@ -142,7 +142,7 @@
 
 
 
-            location.href = "/poster"
+            location.href = "/q4"
         })
 
 

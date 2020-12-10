@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+
+<body>
+    <div class="container q2back">
+        <img id="q" src="../static/question/Q4.png">
+        <h1>Select<br>a background color.</h1>
+        <p id="content">배경색을 선택하세요.</p>
+        <div class="color-container">
+            <img class="color" id="white" src="../static/question/white.png">
+            <img class="color" id="red" src="../static/question/red.png">
+            <img class="color" id="blue" src="../static/question/blue.png">
+            <img class="color" id="green" src="../static/question/green.png">
+            <img class="color" id="yellow" src="../static/question/yellow.png">
+            <img class="color" id="pink" src="../static/question/pink.png">
+            <img class="color" id="purple" src="../static/question/purple.png">
+
+        </div>
+        <div id='bottom-container'>
+            <img class="finger" onclick="history.back()" src="../static/question/left.png">
+            <img class="finger" id="finishBtn" src="../static/question/finish.png">
+        </div>
+    </div>
+
+    <script>
+        $('input').change(function () {
+            let image = $('input')[0].files[0]
+            var reader = new FileReader()
+            reader.readAsDataURL(image)
+
+            reader.onload = function(){
+                sessionStorage.setItem('img-src',reader.result)
+                sessionStorage.setItem('img',image)
+            }
+            
+            
+        })
+
+        $('.color').click(function(){
+            $('.clicked-color').removeClass('clicked-color');
+            $(this).addClass('clicked-color');
+            $('.color').not('.clicked-color').animate({
+                opacity: 0.33},200)
+            $('.clicked-color').animate({
+                opacity: 1},200)
+        })
+
+        $('#finishBtn').click(function(){
+            sessionStorage.setItem('color',$('.clicked-color').attr('id'))
+            location.href = "/poster"
+        })
+
+    </script>
+</body>
+
+</html>
