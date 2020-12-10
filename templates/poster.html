@@ -23,41 +23,55 @@
 
 <body>
     <a href="/menu"><img id="menu" src="../static/others/menu.png"></a>
-    <div class="container">
-        <div><img id="help" src="../static/question/poster-help.png"> </div>
-        
+    
+    <div class="container wrap">
+        <div id="blank"> </div>
+        <div class="poster-tab wrap">
+            <img id="help" src="../static/question/poster-help.png">
             <div id="canvas"></div>
-            <div id="button-tab">
-                <img id="save" class="btn" src="../static/question/download.png">
-                <img id="archive" class="btn" src="../static/question/archive.png">
-            </div>
+         </div>
+
+        
+        <div class="button-tab">
+            <img id="save" class="btn" src="../static/question/download.png">
+            <img id="archive" class="btn" src="../static/question/archive.png">
         </div>
-        
-        
     </div>
-   
+
+
+    </div>
+
 
 
 </body>
 
 <script>
+    $(document).ready(function () {
+        let word1 = sessionStorage.getItem('word1')
+        let word2 = sessionStorage.getItem('word2')
+        let word3 = sessionStorage.getItem('word3')
+        console.log(word1)
+        console.log(word2)
+        console.log(word3)
 
-    
-    var hh = sessionStorage.getItem('word1')
-    
-    $.ajax({
-        type:'GET',
-        url:'/submit',
-        data:{ word1: "hh" },
-        success: function (response){
-            if(response["result"] =='success'){
-                console.log(response["words"])
+        $.ajax({
+            type: 'GET',
+            url: '/submit',
+            data: { word1: "hh" },
+            success: function (response) {
+                if (response["result"] == 'success') {
+                    console.log(response["words"])
+                }
             }
-        }
+        })
     })
-    
-    
-    
+
+    var hh = sessionStorage.getItem('word1')
+
+
+
+
+
     var zidx = 10;
 
     $(".moveable").draggable({
@@ -82,7 +96,7 @@
         html2canvas(div).then(function (canvas) {
             var image = canvas.toDataURL()
             let name = ""
-            downloadURI(image, "future-"+name+".png")
+            downloadURI(image, "future-" + name + ".png")
         })
     }
 

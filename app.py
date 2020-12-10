@@ -64,9 +64,9 @@ def getWord():
 def submit():
     word1 = request.form['word1']
     # find1 = db.wannabe.find({"word": word1},{'_id':False})
-    print(word1)
+    
 
-    return jsonify({'result':'success','words': "find1"})
+    return jsonify({'result':'success','words': wor1})
 
 
 @app.route('/poster')
