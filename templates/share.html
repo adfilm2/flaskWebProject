@@ -15,7 +15,7 @@
 <body>
     <div id="top">
         <a href="/home"><img id="logo" src="../static/others/logo.png"></a>
-        <a href="/menu"><img id="menu" src="../static/others/menu/menu.png"></a>
+        <a href="/menu"><img id="menu" src="../static/others/menu.png"></a>
     </div>
     
     <div id="container" >
@@ -27,6 +27,7 @@
         </div>
     </div>
     <script>
+        
         $.ajax({
             type: 'GET',
             url: '/share/story',
@@ -61,6 +62,20 @@
                 opacity: 1},200)
             
             
+        })
+        $(document).on('click','#submit', function(){
+            let myStory = $('input').val()
+            $.ajax({
+                type:'POST',
+                url:'/share/newstory',
+                data:{'story': myStory},
+                success: function(response){
+                    if(response["result"]=="success"){
+                        console.log('new story uploaded')
+                        location.reload()
+                    }
+                }
+            })
         })
 
         $('body').click(function(){

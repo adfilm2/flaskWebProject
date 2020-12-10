@@ -96,8 +96,9 @@ def getStory():
 
 @app.route('/share/newstory', methods = ['POST'])
 def newStory():
-    #new story 추가
-    return 
+    received = request.form['story']
+    db.story.insert_one({'story':received})
+    return jsonify({'result':'success'})
 
 @app.route('/about', methods = ['GET'])
 def about():
