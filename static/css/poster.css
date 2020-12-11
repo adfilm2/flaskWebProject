@@ -16,16 +16,102 @@ body{
     flex-basis: 0px;
 }
 #canvas{
-    background-image: url('../poster/Blue.png');
     background-repeat: no-repeat;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     background-size: cover;
+    align-items: center;
     flex: none;
     height: 600px;
     width: 415px;
     margin: 0 auto;
-    border: black solid 1px;
+    /* box-shadow: 0px 0px 20px #000; */
+    position: relative;
+    
 }
+
+#canvas-name{
+    justify-content: center;
+    font-family: 'digestive-2';
+    font-size: 25px;
+    top: 0;
+    display: flex;
+    text-align: center;
+    margin: 15px auto;
+    position: absolute;
+    align-items: center;
+}
+
+#canvas-name img{
+    width: 20px;
+    margin: 0 20px;
+}
+
+#canvas-word{
+    font-family: 'digestive-2';
+    font-size: 40px;
+    position: absolute;
+    justify-content: center;
+    margin: auto;
+}
+.word{
+    margin: 10px;
+}
+
+#canvas-img{
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+#img1,#img2,#img3{
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
+}
+#liquid-img{
+    width: 100%;
+    height: 100%;
+    z-index: -90;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+#texture{
+    
+    width: 100%;
+    height: 100%;
+    z-index:-1;
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+    position: absolute;
+}
+
+#user{
+    width: 100%;
+    margin-top: -10px;
+    -webkit-filter: grayscale(100%) blur(2px);
+    filter: grayscale(100%) blur(2px);  
+    
+    /* mix-blend-mode: luminosity; */
+}
+
+
+#canvas-user{
+    background: white;
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 50%;
+    right: 20px;
+    bottom: 100px;
+}
+
+
+
 .poster-tab{
     display: inline-block;
     flex-basis: 0px;
@@ -53,20 +139,22 @@ body{
     width: 100px;
 }
 
-.moveable{
-    cursor: move;
-    width: min-content;
-}
+
+
+
 .resizable{
+    position: absolute;
+    cursor: move;
+    display: inline-block;
     width: 100px;
     height: 100px;
-    display: inline-block;
-    background-image: url('../river.jpg');
-    background-size: contain;
+}
+.resizable >img{
+    width: 100%;
     
 }
-#resizable { width: 150px; height: 150px; padding: 0.5em; }
-#resizable h3 { text-align: center; margin: 0; }
+
+
 
 .container {
     text-align: center;
@@ -78,4 +166,10 @@ body{
     left: 0;
     font-size: 50px;
     justify-content: center;
+}
+
+@media (max-width: 768px){
+    .container{
+        flex-direction: column;
+    }
 }

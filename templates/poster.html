@@ -5,33 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>The Future is Women</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/poster.css') }}">
-    <!-- 부트스트랩 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- jquery ui  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <!-- html2canvas -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
     <!-- jquery mobile -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script src="../static/js/touch-punch.js"></script>
 </head>
 
 <body>
     <a href="/menu"><img id="menu" src="../static/others/menu.png"></a>
-    
+
     <div class="container wrap">
-        <div id="blank"> </div>
+
         <div class="poster-tab wrap">
             <img id="help" src="../static/question/poster-help.png">
-            <div id="canvas"></div>
-         </div>
 
-        
+
+            <div id="canvas">
+                <div id="canvas-name">
+                    <img src="../static/poster/star.png">
+                    <span></span>
+                    <img src="../static/poster/star.png">
+                </div>
+                <div id="canvas-word"></div>
+
+                <div class="moveable resizable"><img id="img1"></div>
+                <div class="moveable resizable"><img id="img2"></div>
+                <div class="moveable resizable"><img id="img3"></div>
+                <div id="canvas-user">
+                    <img id="user">
+                </div>
+                <img id="texture" src="../static/poster/텍스처_어둡게하기+불투명도40.jpg">
+                <img id="liquid-img">
+                <img id="canvas-img">
+
+            </div>
+        </div>
+
+
         <div class="button-tab">
             <img id="save" class="btn" src="../static/question/download.png">
             <img id="archive" class="btn" src="../static/question/archive.png">
@@ -39,66 +61,78 @@
     </div>
 
 
-    </div>
 
 
+    
+    <script>
+        
+
+        $(document).ready(function () {
+            console.log("dkdhk")
+            let imgcolor = sessionStorage.getItem('color')
+            $('#canvas-img').attr('src', '../static/poster/' + imgcolor + '.png')
+            let num = Math.floor(Math.random()*24)+1
+            $('#liquid-img').attr('src', '../static/liquid/'+num+'.png')
+            $('#canvas-name span').text(sessionStorage.name)
+            $('#img1').attr('src', sessionStorage.path1)
+            $('#img2').attr('src', sessionStorage.path2)
+            $('#img3').attr('src', sessionStorage.path3)
+            var obj = "<div class ='word'>" + sessionStorage.word1 + "</div>"
+            obj += "<div class ='word'>" + sessionStorage.word2 + "</div>"
+            obj += "<div class ='word'>" + sessionStorage.word3 + "</div>"
+
+            $('#canvas-word').append(obj)
+
+            $('#user').attr('src', sessionStorage.getItem('img-src'))
+
+
+
+
+        })
+
+
+        var zidx = 10;
+
+        $(".moveable").draggable({
+            containment: 'parent'
+        }).mousedown(function () {
+            $(this).css('z-index', zidx)
+            zidx++
+        });
+
+        $('.resizable').resizable({
+            containment: "#canvas"
+        });
+
+        $('#save').click(function () {
+            
+            capture($('#canvas'))
+        })
+
+        function capture(div) {
+            div = div[0]
+            
+            html2canvas(div).then(function (canvas) {
+                var image = canvas.toDataURL()
+
+                let name = sessionStorage.name
+                downloadURI(image, "future-" + name + ".png")
+            })
+        }
+
+        function downloadURI(uri, name) {
+            var link = document.createElement("a")
+            link.download = name
+            link.href = uri
+            document.body.appendChild(link)
+            link.click()
+        }
+
+    </script>
+    
 
 </body>
 
-<script>
-    
 
-
-    
-
-
-
-
-
-    var zidx = 10;
-
-    $(".moveable").draggable({
-        containment: 'parent'
-    }).mousedown(function () {
-        $(this).css('z-index', zidx)
-        zidx++
-    });
-
-    $(function () {
-        $("#resizable").resizable();
-    });
-
-
-
-    $('#save').click(function () {
-        capture($('#canvas'))
-    })
-
-    function capture(div) {
-        div = div[0]
-        html2canvas(div).then(function (canvas) {
-            var image = canvas.toDataURL()
-            let name = ""
-            downloadURI(image, "future-" + name + ".png")
-        })
-    }
-
-    function downloadURI(uri, name) {
-        var link = document.createElement("a")
-        link.download = name
-        link.href = uri
-        document.body.appendChild(link)
-        link.click()
-    }
-
-
-
-
-
-
-
-
-
-</script>
 
 </html>

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+    </script>
     <title>Title</title>
 </head>
 
@@ -17,28 +19,40 @@
         <h1>Upload<br>Your Photo.</h1>
         <p id="content">당신의 사진을 업로드하세요</p>
         <div class="textdiv">
-            <input type="file"name="file" accept="image/png,image/jpg,image/jpeg" placeholder="TEXT 입력">
+            <input type="file" name="file" id="input" accept="image/png,image/jpg,image/jpeg" onchange="upload()"
+                placeholder="TEXT 입력">
             <img src="../static/question/lense.png">
         </div>
         <div id='bottom-container'>
             <img class="finger" onclick="history.back()" src="../static/question/left.png">
-            <a href="/q3"><img class="finger" src="../static/question/right.png"></a>
+            <img class="finger" onclick="next()" src="../static/question/right.png">
+
         </div>
     </div>
 
     <script>
-        $('input').change(function () {
-            let image = $('input')[0].files[0]
-            var reader = new FileReader()
-            reader.readAsDataURL(image)
+        var image = null;
+        function upload() {
+            var fileinput = document.getElementById("input");
+            image = new SimpleImage(fileinput);
+        }
 
-            reader.onload = function(){
-                sessionStorage.setItem('img-src',reader.result)
-                sessionStorage.setItem('img',image)
+        function next() {
+            for (var pixel of image.values()) {
+                var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+                pixel.setRed(avg);
+                pixel.setGreen(avg);
+                pixel.setBlue(avg);
             }
-            
-            
-        })
+            var canvas = document.createElement('canvas');
+            canvas.width = image.width
+            canvas.height = image.height
+            image.drawTo(canvas);
+            sessionStorage.setItem('img-src', canvas.toDataURL("image/png"))
+
+            location.href = "/q3"
+
+        }
 
     </script>
 </body>

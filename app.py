@@ -57,7 +57,7 @@ def q3():
 def getWord():
     print('getWord()')
     star = list(db.wannabe.find({},{'_id':False, 'word':True}))
-    print(star)
+    
     return jsonify({'result': 'success', 'list': star})
 
 @app.route('/q4')
@@ -70,19 +70,25 @@ def submit():
     recword2 = request.form['word2']
     recword3 = request.form['word3']
 
-    find1 = list(db.wannabe.find({"word":recword1}))
+    find1 = list(db.wannabe.find({"word":recword1}))    
     find2 = list(db.wannabe.find({"word":recword2}))
     find3 = list(db.wannabe.find({"word":recword3}))
-    # find1 = db.wannabe.find({"word": word1},{'_id':False})
+
+    if not find1:
+        find1.insert(0,{'path':'../'})
+    if not find2:
+        find2.insert(0,{'path':'../'})
+    if not find3:
+        find3.insert(0,{'path':'../'})
+    
     list1 = [ find1[0]['path'], find2[0]['path'], find3[0]['path'] ]
-    print(find1)
+    
     return jsonify({'result':'success','words': list1})
 
 
 @app.route('/poster')
 def poster():
-    #localstorage에 있는 name, wannabe 보냄
-    #name, wannabe img 받아와 load
+
     return render_template('poster.html')
     
 

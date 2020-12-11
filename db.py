@@ -27,7 +27,7 @@ def insert():
         {"word": "be loved", "path": "../static/mapping/BeLoved.png"},
         {"word": "loving", "path": "../static/mapping/Loving.png"},
         {"word": "passionate","path":"../static/mapping/Passionate.png"},
-        {"word": "peaceful", "path": "../static/mapping/Peachful.png"},
+        {"word": "peaceful", "path": "../static/mapping/Peaceful.png"},
         {"word": "strong", "path": "../static/mapping/Strong.png"}
         
 

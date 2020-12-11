@@ -112,19 +112,15 @@
 
         $(document).on('click', '#next', function () {
 
-            let word1 = $('#1').val()
-            let word2 = $('#2').val()
-            let word3 = $('#3').val()
+            sessionStorage.word1 = $('#1').val()
+            sessionStorage.word2 = $('#2').val()
+            sessionStorage.word3 = $('#3').val()
 
-
-            console.log(word1)
-            console.log(word2)
-            console.log(word3)
-
-            $.ajax({
+            if(sessionStorage.word1 || sessionStorage.word2 || sessionStorage.word3){
+                $.ajax({
                 type: 'POST',
                 url: '/submit',
-                data: { 'word1': word1 , 'word2':word2,'word3':word3 },
+                data: { 'word1': sessionStorage.word1 , 'word2':sessionStorage.word2,'word3':sessionStorage.word3 },
                 success: function (response) {
                     if (response["result"] == "success") {
                         
@@ -140,9 +136,12 @@
                 }
             })
 
-
-
             location.href = "/q4"
+            }else{
+                alert('키워드 한 개 이상 입력하세요.')
+            }
+
+            
         })
 
 

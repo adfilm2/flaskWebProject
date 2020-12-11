@@ -22,30 +22,25 @@
         </div>
         <div id='bottom-container'>
             <img class="finger" onclick="history.back()" src="../static/question/left.png">
-            <img id="next"class="finger" src="../static/question/right.png">
+            <img id="next" class="finger" src="../static/question/right.png">
         </div>
     </div>
 
     <script>
-        $('#next').click(function(){
-            userName = $('input').val()
-            $.ajax({
-                type:"GET",
-                url:'/q1/name',
-                data:{name: userName},
-                success: function(response){
-                    if(response["result"]=="success"){
-                        alert(response["msg"])
-                    }
-                }
-            })
+        $('#next').click(function () {
+
             let name = $('input').val()
-            sessionStorage.setItem("name",name)
-            console.log(sessionStorage.name)
-            location.href ="/q2"
+            if (name == "") {
+                alert('이름을 입력하세요')
+            } else {
+                sessionStorage.setItem("name", name)
+                console.log(sessionStorage.name)
+                location.href = "/q2"
+            }
+
         })
 
-        
+
     </script>
 
 </body>
