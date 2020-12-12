@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -13,10 +14,12 @@
 </head>
 
 <body>
+    
     <div class="container q3back">
         <img id="q" src="../static/question/Q3.png">
-        <h1>I Want To Be<br>A [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>Grandmother.</h1>
+        <h1>I Want To Be<br>A [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>Grandmother.</h1>
         <p id="content">나는 OOO한 할머니가 되고 싶어.<br><b>[3가지 영어 형용사]</b>를 입력하세요</p>
+        <img class="help" src="../static/question/q3help.png">
         <div class="textdiv">
             <input id='1' type="text" placeholder="TEXT 입력">
             <img src="../static/question/lense.png">

@@ -1,3 +1,7 @@
+html,body{
+    cursor: url(../others/pointer.png),auto;
+}
+
 body{
     padding: 0;
     margin: 0;
@@ -22,12 +26,24 @@ body{
     url('../font/DigestiveDemo-two.woff2') format('woff2')
 
 }
+@font-face{
+    font-family: 'kopub dotum';
+    src: url('../font/KoPubDotumMedium.eot') format('eot'),
+    url('../font/KoPubDotumMedium.woff') format('woff')
+}
+@font-face{
+    font-family: 'futura';
+    src: url('../font/futura.eot') format('eot'),
+    url('../font/Futura-Bold.woff') format('woff2')
+}
+
 #logo{
     position: fixed;
     float: left;
     left: 10px;
     top: 10px;
-    width: 87px;
+    z-index: 20;
+    width: 80px;
 }
 
 #menu{
@@ -35,5 +51,15 @@ body{
     float: right;
     right: 10px;
     top: 10px;
-    width: 118px;
+    z-index: 20;
+    width: 111px;
+}
+
+@media (max-width: 768px){
+    #menu{ width: 78px; }
+    #logo{ width: 48px; }
+}
+@media screen and (max-width: 330px){
+    #menu{ width: 72px; }
+    #logo{ width: 40px; }
 }

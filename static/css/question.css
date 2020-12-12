@@ -4,40 +4,40 @@ body{
 
 .container{
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     font-size: 50px;
+    background-attachment: fixed;
+    background-size: cover;
 }
 .q1back{
     background-image: url('../back/Q1back.png');
-    background-size: cover;
 }
 .q2back{
-    background-image: url('../back/Q2back.png');
-    background-size: cover;
+    background-image: url('../back/Q2back.png');    
 }
 .q3back{
     background-image: url('../back/Q3back.png');
-    background-size: cover;
 }
 /* 공통 */
 
 h1{
+    font-family: 'futura';
     font-size: 35px;
-    margin: 0;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    font-weight: bold;
+    margin: 1em 0 0 0;
 }
-p{
-    font-size: 20px;
-}
-
-/* 공통 */
-
 
 #q{
-    width: 72px;
+    width: 68px;
     display: inline-block;
     vertical-align: middle;
     margin-top: 2em;
@@ -45,37 +45,83 @@ p{
 }
 
 #content{
-    margin-top: 1em;
-    margin-bottom: 1.5em;
+    font-family: 'Noto Sans KR',sans-serif;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    font-size: 18px;
 }
 
+#bottom-container{
+    width: 70%;
+    display:flex;
+    position: absolute;
+    bottom: 0;
+    margin-top: auto;
+    justify-self: center;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+
+/* 공통 */
+
+
+
 .textdiv{
+    font-family: 'Noto Sanse';
     vertical-align: middle;
     text-align: center;
-    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    z-index: 5;
 }
 
 .textdiv > input{
     display: inline-block;
     vertical-align: middle;
+    background-color: white;
 }
-.textdiv > img {
+.textdiv  img {
     width: 1em;
+    margin-left: 10px;
     vertical-align: middle
+}
+#textdiv1{
+    margin-top: 100px;
 }
 
 input{
     border: black 4px solid;
     height: 42px;
-    width: 150px;
+    width: 190px;
     border-radius: 28px;
     padding-left: 20px;
 }
+input[type="file"]{
+    position: absolute;
+    opacity: 0;
+    z-index: -10;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+}
+.help{ 
+    width: 300px;
+    margin-bottom: 2em;
+}
+
 
 .finger{
     width: 180px;
     cursor: pointer;
-    float: left;
+    margin: 30px;
+}
+.skip{ 
+    width: 130px;
 }
 
 #finishBtn{
@@ -90,10 +136,12 @@ input{
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 10;
     background-color: black;
 }
 
 #modal{
+    z-index: 30;
     background-image: url('../back/modalback.png');
     background-size: cover;
     display: none;
@@ -116,30 +164,30 @@ input{
     text-align: center;
     font-size: 50px;
     margin-top: 56px;
-    margin-bottom: 25px;
+    margin-bottom: 0;
 }
 
 #modal> p{
     font-size: 16px;
+    font-family: 'Noto Sans KR',sans-serif;
+    font-weight: bold;
+    margin: 0;
 }
 
 #no{
     width: 23px;
-    float: right;
     margin: 20px;
+    position: absolute;
+    right: 0;
 }
 #modal-container{
-    margin: 20px 15px;
-
+    margin: 40px 15px 0px 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-#bottom-container{
-    padding-left: 20%;
-    padding-right: 20%;
-}
+
 
 .words{
     height: 80px;
@@ -183,6 +231,7 @@ input{
         margin : 0;
         width: 100%;
         height: 100%;
+        min-width: 100%;
         left: 0;
         top: 0;
        
@@ -190,7 +239,9 @@ input{
     #modal>h1{ 
         text-align: center;
         font-size: 40px;}
+    #content{ font-size: 15px;}
 
+    .skip{display: none;}
     
     #q{
         width: 50px;
@@ -199,12 +250,15 @@ input{
     }
     h1{
         font-size: 30px;
+        margin-top: 30px;
     }
     p{
         font-size: 15px;
     }
+    
+    
     .textdiv > img{
-        width: 30px;
+        width: 40px;
     }
     span > img {
         width: 145px;
@@ -212,14 +266,49 @@ input{
     #finishBtn{
         width: 85px;
         float: right;
+        margin-right: 0.5em;
     }
+    input{ width: 130px;}
     .finger{
-        width: 113px;
-        float: left;
+        width: 150px;
+        margin: 10px 10px;
     }
+    .help{ width: 70%; margin-bottom: 1em;}
     #bottom-container{
-        padding-left: 10%;
-        padding-right: 10%;
+        width: 100%;
+    }
+
+    .color{
+        width: 130px;
     }
  }
+
+ @media screen and (min-width:300px) and (max-width: 374px) ,(max-height: 736px){
+    h1{ font-size: 25px; margin-bottom: 0.5em; margin-top: 0;}
+    #textdiv1{margin-top: 50px ;}
+    #q{margin-top: 0.3em;}
+    #content{ margin-top: 0;}
+    .finger{margin: 5px 5px;}
+    .help{margin-bottom: 0.3em;}
+    .textdiv{margin-bottom: 5px;}
+    .texdiv input{ border: black 3px solid;
+        height: 35px;}
+    input{ border: black 3px solid;
+    height: 35px;}
+    .textdiv img{ width: 40px;}
+    
+
+}
+@media screen and (max-width:330px){
+    .words{ width: 120px; height: 64px;}
+    .word-text{font-size: 18px;}
+    .color{width: 100px;}
+}
+@media screen and (min-height:569px) and (max-height:736px){
+    #q{margin-top: 1.4em;}
+    .texdiv{margin-bottom: 10px;}
+    .help{margin-bottom: 1em;}
+    
+}
+
 

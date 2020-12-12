@@ -20,9 +20,9 @@ def home():
 @app.route('/home/poster', methods=['GET'])
 def getPoster():
     # print('getPoster()')
-    # posters = list(db.poster.find({},{'_id':False}))
+    posters = list(db.poster.find({},{'_id':False}))
     
-    return jsonify({'result':'success', 'list':['성공성공','둘다성공']})
+    return jsonify({'result':'success', 'list':posters})
 
 @app.route('/menu')
 def menu():

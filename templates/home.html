@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
@@ -14,22 +14,37 @@
 <body>
     <div class="container">
         <a href="/home"><img id="logo" src="../static/others/logo.png"></a>
-    <a href="/menu"><img id="menu" src="../static/others/menu.png"></a>
+        <a href="/menu"><img id="menu" src="../static/others/menu.png"></a>
         <img id='title' src="../static/others/hometitle.png">
         <div id="poster-box">
-            
+
         </div>
     </div>
 
     <script>
-        
+
         $.ajax({
             type: 'GET',
             url: '/home/poster',
             data: {},
             success: function (response) {
                 if (response["result"] == "success") {
-                    console.log(response['list'])
+
+                    let list = response['list'];
+                    console.log(list)
+                    var object = "";
+                    for (var i = list.length-1; i >= 0; i--) {
+                        object += "<img class='poster'src ='";
+                        object += list[i]['poster'];
+                        if (i % 2 == 0) {
+                            object += "' style='transform: rotate(7deg);' >";
+                        } else {
+                            object += "' style='transform: rotate(-7deg);' >";
+                        }
+
+                    }
+
+                    $("#poster-box").append(object);
                 }
             }
 

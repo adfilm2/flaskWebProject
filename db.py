@@ -17,6 +17,7 @@ db = client.anti
 
 def insert():
     db.wannabe.delete_many({})
+    
     wordlist = [
         {"word": "fair", "path": "../static/mapping/Fair.png"},
         {"word": "faithful", "path": "../static/mapping/Faithful.png"},

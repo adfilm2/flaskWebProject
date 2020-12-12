@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -15,9 +16,9 @@
 <body>
     <div class="container q1back">
         <img id="q" src="../static/question/Q1.png">
-        <h1>Enter your<br>'First Name'.</h1>
-        <p id="content">당신의 이름을 입력하세요</p>
-        <div class="textdiv">
+        <h1>Enter Your<br>'First Name'.</h1>
+        <p id="content">당신의 영문 이름을 입력하세요</p>
+        <div class="textdiv" id="textdiv1">
             <input type="text" placeholder="이름 입력">
         </div>
         <div id='bottom-container'>
@@ -25,6 +26,7 @@
             <img id="next" class="finger" src="../static/question/right.png">
         </div>
     </div>
+
 
     <script>
         $('#next').click(function () {

@@ -45,7 +45,7 @@
                 <div id="canvas-user">
                     <img id="user">
                 </div>
-                <img id="texture" src="../static/poster/텍스처_어둡게하기+불투명도40.jpg">
+                
                 <img id="liquid-img">
                 <img id="canvas-img">
 
@@ -62,16 +62,16 @@
 
 
 
-    
+
     <script>
-        
+
 
         $(document).ready(function () {
             console.log("dkdhk")
             let imgcolor = sessionStorage.getItem('color')
             $('#canvas-img').attr('src', '../static/poster/' + imgcolor + '.png')
-            let num = Math.floor(Math.random()*24)+1
-            $('#liquid-img').attr('src', '../static/liquid/'+num+'.png')
+            let num = Math.floor(Math.random() * 24) + 1
+            $('#liquid-img').attr('src', '../static/liquid/' + num + '.png')
             $('#canvas-name span').text(sessionStorage.name)
             $('#img1').attr('src', sessionStorage.path1)
             $('#img2').attr('src', sessionStorage.path2)
@@ -81,8 +81,10 @@
             obj += "<div class ='word'>" + sessionStorage.word3 + "</div>"
 
             $('#canvas-word').append(obj)
-
-            $('#user').attr('src', sessionStorage.getItem('img-src'))
+            if(sessionStorage.getItem('img-src')!= ""){
+                $('#user').attr('src', sessionStorage.getItem('img-src'))
+            }
+           
 
 
 
@@ -109,7 +111,7 @@
 
         function capture(div) {
             div = div[0]
-            
+
             html2canvas(div).then(function (canvas) {
                 var image = canvas.toDataURL()
 
@@ -126,34 +128,31 @@
             link.click()
         }
 
-        $('#archive').click(function(){
+        $('#archive').click(function () {
             var image = null
             html2canvas($('#canvas')[0]).then(function (canvas) {
                 image = canvas.toDataURL()
-                
-            })
-            
-            $.ajax({
-            type: 'POST',
-            url: '/poster/archive',
-            data: { 'poster': image },
-            success: function (response) {
-                if (response["result"] == "success") {
-                    alert('썽공!')
+
+                $.ajax({
+                type: 'POST',
+                url: '/poster/archive',
+                data: { 'poster': image },
+                success: function (response) {
+                    if (response["result"] == "success") {
+
+                        location.href = '/home'
+                    }
                 }
 
-                    
+            });
+            })
 
-              
+            
+        })
 
-            }
-
-        });
-    })
-       
 
     </script>
-    
+
 
 </body>
 

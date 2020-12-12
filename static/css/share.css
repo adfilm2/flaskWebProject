@@ -1,5 +1,7 @@
 body{
     /* text-align: center; */
+    width: 100%;
+    height: 100%;
     background-attachment: fixed;
     background-image: url('../back/shareback.png');
     background-size: cover;
@@ -9,10 +11,17 @@ body{
 h1{
     padding-top: 100px;
     margin-top: 0;
+    margin-bottom:0.3em ;
     font-family: 'digestive';
-    font-size: 100px;
+    font-weight: 100;
+    font-size: 50px;
+    line-height: 1.2;
 }
-p{ font-size: 21px ;}
+p{ font-family: 'Noto Sans KR',sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 0;
+}
 
 
 #container{
@@ -63,6 +72,7 @@ input{
     color: black;
     text-align: center;
     overflow: scroll;
+    transition: all ease-out 0.7s;
     /* top: -118px;
     left: -225px; */
 }
@@ -74,5 +84,25 @@ input{
 }
 
 .clicked{
-    
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    h1{font-size: 44px;}
+    #input-div {
+        position: fixed;
+        width: 100%;
+        padding: 15px 0;
+        background: rgba(188,224,253, 0.39);
+        display: flex;
+        align-items: center;
+        bottom: 0;
+        z-index: 100;
+        justify-content: center;
+    }
+    .bubble{
+        width: 400px;
+        height: 204px;
+    }
+    #bubbles{ margin-top: 30px;}
 }

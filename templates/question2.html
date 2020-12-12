@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
@@ -20,13 +21,17 @@
         <img id="q" src="../static/question/Q2.png">
         <h1>Upload<br>Your Photo.</h1>
         <p id="content">당신의 사진을 업로드하세요</p>
+        <img class="help" src="../static/question/q2help.png">
         <div class="textdiv">
+            <input class="file-name" value="파일 선택" disabled="disabled">
             <input type="file" name="file" id="input" accept="image/png,image/jpg,image/jpeg" onchange="upload()"
-                placeholder="TEXT 입력">
-            <img src="../static/question/lense.png">
+                placeholder="">
+                <label for="input"><img src="../static/question/file.png"></label>
+            
         </div>
         <div id='bottom-container'>
             <img class="finger" onclick="history.back()" src="../static/question/left.png">
+            <img class="skip" onclick="next()" src="../static/question/skip.png">
             <img class="finger" onclick="next()" src="../static/question/right.png">
 
         </div>
@@ -37,10 +42,17 @@
         function upload() {
             var fileinput = document.getElementById("input");
             image = new SimpleImage(fileinput);
+            var value = $('#input').val().split("\\")
+            var name = value[value.length-1]
+            $('.file-name').val(name)
         }
 
         function next() {
-            for (var pixel of image.values()) {
+            if(image == null){
+                sessionStorage.setItem('img-src',"")
+
+            }else{
+                for (var pixel of image.values()) {
                 var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
                 pixel.setRed(avg);
                 pixel.setGreen(avg);
@@ -51,6 +63,8 @@
             canvas.height = image.height
             image.drawTo(canvas);
             sessionStorage.setItem('img-src', canvas.toDataURL("image/png"))
+            }
+            
 
             location.href = "/q3"
 

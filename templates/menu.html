@@ -13,34 +13,53 @@
 </head>
 
 <body>
+    <img id="no" onclick="history.back()" src="../static/others/no-black.png">
     <div class="back">
+        <img id="menu-finger" src="../static/question/left.png">
+
         <div class="container">
             <img class="menubtn" id="home" src="../static/menu/home.png">
-
             <img class="menubtn" id="about" src="../static/menu/about.png">
-
             <img class="menubtn" id="make" src="../static/menu/make.png">
-
             <img class="menubtn" id="share" src="../static/menu/share.png">
 
         </div>
-        <img id="menu-finger" src="../static/question/left.png">
+
+
+
+
     </div>
+
+
     <script>
         $(".menubtn").click(function () {
             $(this).attr("src", "../static/menu/" + $(this).attr('id') + "_bl.png")
             switch ($(this).attr('id')) {
                 case "home":
-                    location.href = "/home"
+                    $('#menu-finger').addClass('home')
+                    setTimeout(function () {
+                        location.href = "/home"
+                    }, 70);
                     break
                 case "about":
-                    location.href = "/about"
+                    $('#menu-finger').addClass('about')
+                    setTimeout(function () {
+                        location.href = "/about"
+                    }, 70);
+                    
                     break
                 case "make":
-                    location.href = "/intro"
+                    $('#menu-finger').addClass('make')
+                    setTimeout(function () {
+                        location.href = "/intro"
+                    }, 70);
                     break
                 case "share":
-                    location.href = "/share"
+                    $('#menu-finger').addClass('share')
+                    setTimeout(function () {
+                        location.href = "/share"
+                    }, 70);
+                    
 
 
             }
