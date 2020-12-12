@@ -17,7 +17,6 @@
 
     <!-- html2canvas -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    
     <!-- jquery mobile -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     <script src="../static/js/touch-punch.js"></script>
@@ -105,7 +104,6 @@
         });
 
         $('#save').click(function () {
-            
             capture($('#canvas'))
         })
 
@@ -127,6 +125,32 @@
             document.body.appendChild(link)
             link.click()
         }
+
+        $('#archive').click(function(){
+            var image = null
+            html2canvas($('#canvas')[0]).then(function (canvas) {
+                image = canvas.toDataURL()
+                
+            })
+            
+            $.ajax({
+            type: 'POST',
+            url: '/poster/archive',
+            data: { 'poster': image },
+            success: function (response) {
+                if (response["result"] == "success") {
+                    alert('썽공!')
+                }
+
+                    
+
+              
+
+            }
+
+        });
+    })
+       
 
     </script>
     

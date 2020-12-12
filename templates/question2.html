@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
-    </script>
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+    <!-- blur -->
+    <script src="https://zurb.com/playground/uploads/upload/upload/330/stackblur.min.js"></script>
+    
     <title>Title</title>
 </head>
 
@@ -31,7 +33,7 @@
     </div>
 
     <script>
-        var image = null;
+        var image = null;       
         function upload() {
             var fileinput = document.getElementById("input");
             image = new SimpleImage(fileinput);

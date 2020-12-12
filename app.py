@@ -92,15 +92,15 @@ def poster():
     return render_template('poster.html')
     
 
-@app.route('/poster/save', methods =['POST'])
-def save():
-    #이미지 서버에 저장
-    #홈화면으로 redirect
-    return
+@app.route('/poster/archive', methods =['POST'])
+def archive():
+    poster = request.form['poster']
+    db.poster.insert_one({'poster':poster})
+    return jsonify({'result':'success'})
 
 @app.route('/share')
 def share():
-    #story list 불러오기
+    
     return render_template('share.html')
 
 @app.route('/share/story', methods=['GET'])
