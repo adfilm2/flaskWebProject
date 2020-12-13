@@ -13,8 +13,9 @@
 </head>
 
 <body>
-    <img id="no" onclick="history.back()" src="../static/others/no-black.png">
+    
     <div class="back">
+        <img id="no" onclick="history.back()" src="../static/others/no-black.png">
         <img id="menu-finger" src="../static/question/left.png">
 
         <div class="container">
@@ -59,10 +60,12 @@
                     setTimeout(function () {
                         location.href = "/share"
                     }, 70);
-                    
-
-
             }
+        })
+
+        $('#no').click(function(){
+            console.log('no')
+            history.back()
         })
     </script>
 </body>

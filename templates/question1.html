@@ -35,6 +35,7 @@
             if (name == "") {
                 alert('이름을 입력하세요')
             } else {
+                name = name.toUpperCase()
                 sessionStorage.setItem("name", name)
                 console.log(sessionStorage.name)
                 location.href = "/q2"
