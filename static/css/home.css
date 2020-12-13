@@ -39,10 +39,20 @@ h1{
     margin-bottom: 30px;
 }
 
+#modal-poster{
+    opacity: 0;
+    width: 30%;
+    min-width: 300px;
+    position: fixed;
+    top: 10%;
+    left: 35%;
+}
+
 
 @media (max-width: 768px){
     .poster{ width: 100px; margin-bottom: 20px;}
     #title{ width: 90%; margin-top: 70px; margin-bottom: 50px;}
+    #modal-poster{min-width: 200px; width: 90%;}
 }
 
 @media screen and (max-width: 330px){
