@@ -3,9 +3,9 @@ from pymongo import MongoClient
 
 
 app = Flask(__name__)
-ip ='localhost'
+ip ='mongodb://antitest:anti1234test@54.180.85.88'
 port = 27017
-client = MongoClient(ip, port)
+client = MongoClient('localhost', port)
 db = client.anti
 
 @app.route('/')
@@ -66,6 +66,7 @@ def q4():
 
 @app.route('/submit', methods= ['POST'])
 def submit():
+    print('submit')
     recword1 = request.form['word1']
     recword2 = request.form['word2']
     recword3 = request.form['word3']

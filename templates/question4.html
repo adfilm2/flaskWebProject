@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
@@ -33,18 +33,6 @@
     </div>
 
     <script>
-        $('input').change(function () {
-            let image = $('input')[0].files[0]
-            var reader = new FileReader()
-            reader.readAsDataURL(image)
-
-            reader.onload = function(){
-                sessionStorage.setItem('img-src',reader.result)
-                sessionStorage.setItem('img',image)
-            }
-            
-            
-        })
 
         $('.color').click(function(){
             $('.clicked-color').removeClass('clicked-color');
@@ -53,11 +41,18 @@
                 opacity: 0.33},200)
             $('.clicked-color').animate({
                 opacity: 1},200)
+                sessionStorage.setItem('color',$('.clicked-color').attr('id'))
         })
 
         $('#finishBtn').click(function(){
-            sessionStorage.setItem('color',$('.clicked-color').attr('id'))
-            location.href = "/poster"
+            console.log(sessionStorage.getItem('color'))
+            if(sessionStorage.getItem('color')){
+                location.href = "/poster"
+            }else{
+                alert('포스터 색상을 선택해주세요.')
+            
+            }
+            
         })
 
     </script>

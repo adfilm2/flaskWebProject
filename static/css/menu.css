@@ -16,8 +16,8 @@ body{
 }
 .container{
     
-    margin-left: 100px;
-    width: 40%;
+    margin-left: 150px;
+    width: 35%;
     position: relative;
 }
 
@@ -77,7 +77,6 @@ body{
 }
 
 @media (max-width: 768px){
-    
     .back{
         width: 100%;
         flex-direction: column;
@@ -91,7 +90,7 @@ body{
     #make,#share{width: 95%;}
     #menu-finger{
         position: initial;
-        width: 160px;
+        width: 40%;
         margin: 40px auto;
     }
     .home,.make,.about,.share{

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
@@ -14,10 +14,11 @@
 </head>
 
 <body>
-    
+
     <div class="container q3back">
         <img id="q" src="../static/question/Q3.png">
-        <h1>I Want To Be<br>A [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>Grandmother.</h1>
+        <h1>I Want To Be<br>A [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>Grandmother.
+        </h1>
         <p id="content">나는 OOO한 할머니가 되고 싶어.<br><b>[3가지 영어 형용사]</b>를 입력하세요</p>
         <img class="help" src="../static/question/q3help.png">
         <div class="textdiv">
@@ -115,37 +116,44 @@
 
         $(document).on('click', '#next', function () {
 
-            sessionStorage.word1 = $('#1').val()
-            sessionStorage.word2 = $('#2').val()
-            sessionStorage.word3 = $('#3').val()
-
-            if(sessionStorage.word1 || sessionStorage.word2 || sessionStorage.word3){
-                $.ajax({
-                type: 'POST',
-                url: '/submit',
-                data: { 'word1': sessionStorage.word1 , 'word2':sessionStorage.word2,'word3':sessionStorage.word3 },
-                success: function (response) {
-                    if (response["result"] == "success") {
-                        
-                        words = response['words']
-                        console.log(words)
-                        console.log(typeof(words))
-                        console.log(";;"+words[0]+words[1]+words[2])
-                        sessionStorage.setItem('path1',words[0])
-                        sessionStorage.setItem('path2',words[1])
-                        sessionStorage.setItem('path3',words[2])
-                        
-                    }
-                }
-            })
-
-            location.href = "/q4"
-            }else{
-                alert('키워드 한 개 이상 입력하세요.')
-            }
-
             
+            sessionStorage.word1 = capitalize($('#1').val())
+            sessionStorage.word2 = capitalize($('#2').val())
+            sessionStorage.word3 = capitalize($('#3').val())
+            
+
+            if (sessionStorage.word1 || sessionStorage.word2 || sessionStorage.word3) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/submit',
+                    data: { 'word1': sessionStorage.word1, 'word2': sessionStorage.word2, 'word3': sessionStorage.word3 },
+                    success: function (response) {
+                        if (response["result"] == "success") {
+
+                            words = response['words']
+                            console.log(words)
+                            console.log(typeof (words))
+                            console.log(";;" + words[0] + words[1] + words[2])
+                            sessionStorage.setItem('path1', words[0])
+                            sessionStorage.setItem('path2', words[1])
+                            sessionStorage.setItem('path3', words[2])
+
+                        }
+                    }
+                })
+
+
+            } else {
+                alert('키워드를 한 개 이상 입력하세요.')
+            }
+            location.href = "/q4"
+
+
         })
+
+        function capitalize(str) {
+                return str.charAt(0).toUpperCase() + str.slice(1);
+            }
 
 
 
