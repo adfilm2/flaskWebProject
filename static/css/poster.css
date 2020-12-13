@@ -3,6 +3,7 @@ body{
     text-align: center;
     background-image: url('../back/posterback.png');
     background-size: cover;
+    
 
     /* transition-property: width, height, left, top;
     transition-duration: 0.5s; */
@@ -76,7 +77,7 @@ body{
 }
 
 #img1,#img2,#img3{
-    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3); */
 }
 #liquid-img{
     width: 100%;
@@ -160,7 +161,6 @@ body{
 }
 .resizable >img{
     width: 100%;
-    
 }
 
 
@@ -181,4 +181,7 @@ body{
     .container{
         flex-direction: column;
     }
+    #help{ width: 80%;}
+    .poster-tab{ width: 90%;}
+    #canvas{ width: 100%;}
 }

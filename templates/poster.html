@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>The Future is Women</title>
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -23,14 +23,12 @@
 </head>
 
 <body>
-    <a href="/menu"><img id="menu" src="../static/others/menu.png"></a>
+    
 
-    <div class="container wrap">
-
-        <div class="poster-tab wrap">
+    <div class="container">
+        <img id="menu" src="../static/others/menu.png">
+        <div class="poster-tab">
             <img id="help" src="../static/question/poster-help.png">
-
-
             <div id="canvas">
                 <div id="canvas-name">
                     <img src="../static/poster/star.png">
@@ -106,20 +104,18 @@
         });
 
         $('#save').click(function () {
+            
             capture($('#canvas'))
         })
 
         function capture(div) {
-            div = div[0]
-
-            html2canvas(div).then(function (canvas) {
-                var image = canvas.toDataURL()
-
+            html2canvas(div[0],{scale:1.2}).then(function (canvas) {
+                
+                var image = canvas.toDataURL() //오리지날
                 let name = sessionStorage.name
                 downloadURI(image, "future-" + name + ".png")
             })
         }
-
         function downloadURI(uri, name) {
             var link = document.createElement("a")
             link.download = name
@@ -130,8 +126,9 @@
 
         $('#archive').click(function () {
             var image = null
-            html2canvas($('#canvas')[0]).then(function (canvas) {
+            html2canvas($('#canvas')[0],{scale:1.5}).then(function (canvas) {
                 image = canvas.toDataURL()
+                console.log(image)
 
                 $.ajax({
                 type: 'POST',
@@ -148,6 +145,10 @@
             })
 
             
+        })
+
+        $(document).on('click','#menu',function(){
+            location.href="/menu"
         })
 
 
