@@ -22,15 +22,15 @@
         <p id="content">나는 OOO한 할머니가 되고 싶어.<br><b>[3가지 영어 형용사]</b>를 입력하세요</p>
         <img class="help" src="../static/question/q3help.png">
         <div class="textdiv">
-            <input id='1' type="text" placeholder="TEXT 입력">
+            <input class="input3" id='1' type="text" placeholder="TEXT 입력">
             <img class="lense" src="../static/question/lense.png">
         </div>
         <div class="textdiv">
-            <input id='2' type="text" placeholder="TEXT 입력">
+            <input class="input3" id='2' type="text" placeholder="TEXT 입력">
             <img class="lense" src="../static/question/lense.png">
         </div>
         <div class="textdiv">
-            <input id='3' type="text" placeholder="TEXT 입력">
+            <input class="input3" id='3' type="text" placeholder="TEXT 입력">
             <img class="lense" src="../static/question/lense.png">
         </div>
         <div id='bottom-container'>
@@ -53,7 +53,7 @@
 
 
     <script>
-        
+
 
         $.ajax({
             type: 'GET',
@@ -61,7 +61,6 @@
             data: {},
             success: function (response) {
                 if (response["result"] == "success") {
-
 
                     var input = $(this).siblings('input')
                     let msg = response['list'];
@@ -92,28 +91,19 @@
                 $("#modal").css('display', 'inline')
 
             });
-            // //modal word hover
-            // $('.word-text').hover(function () {
-            //     $(this).parent('div').addClass('clicked')
-            // }, function () {
-            //     $(this).parent('div').removeClass('clicked')
-            // });
 
             //modal word click
-            $('.word-text').on('click',function () {
+            $('.word-text').on('click', function () {
                 var inputNum = $("#modal").attr('name')
                 var selected = $(this).text()
                 console.log("clicked " + selected + " in " + inputNum)
-
-                
-
                 dissmissModal()
                 $('#' + inputNum).val(selected)
             })
 
 
             //modal 끄기
-            $('#no,#back').on('click',function () {
+            $('#no,#back').on('click', function () {
                 dissmissModal()
             })
 
@@ -122,6 +112,14 @@
 
 
 
+        })
+
+        $(document).on('click', '.word-text', function () {
+            var inputNum = $("#modal").attr('name')
+            var selected = $(this).text()
+            console.log("clicked " + selected + " in " + inputNum)
+            dissmissModal()
+            $('#' + inputNum).val(selected)
         })
 
 
@@ -151,11 +149,14 @@
                             sessionStorage.setItem('path1', words[0])
                             sessionStorage.setItem('path2', words[1])
                             sessionStorage.setItem('path3', words[2])
+                            setTimeout(function () {
+                                location.href = "/q4"
+                            }, 1000);
 
                         }
                     }
                 })
-                location.href = "/q4"
+
             } else {
                 alert('키워드를 한 개 이상 입력하세요.')
             }

@@ -3,9 +3,9 @@ from pymongo import MongoClient
 
 
 app = Flask(__name__)
-ip ='mongodb://antitest:anti1234test@54.180.85.88'
+ip ='mongodb://anti:anti1234test@15.164.50.153'
 port = 27017
-client = MongoClient('localhost', port)
+client = MongoClient('mongodb://anti:anti1234test@15.164.50.153', port)
 db = client.anti
 
 @app.route('/')
@@ -75,26 +75,32 @@ def submit():
     find1 = list(db.wannabe.find({"word":recword1}))    
     find2 = list(db.wannabe.find({"word":recword2}))
     find3 = list(db.wannabe.find({"word":recword3}))
+    print(find1)
+    print(find2)
+    print(find3)
 
-    # print(find1[0]['path'] + "+" + find2[0]['path'] + "+" + find3[0]['path'])
+    result1 = ""
+    result2 = ""
+    result3 = ""
 
-    if not find1:
-        find1.insert(0,{'path':'../'})
-    else:
-        pass
-    if not find2:
-        find2.insert(0,{'path':'../'})
-    else:
-        pass
+    if find1:
+        print('find1 is not none')
+        result1 = find1[0]['path']
 
-    if not find3:
-        find3.insert(0,{'path':'../'})
-    else:
-        pass
+
+    if find2:
+        result2 = find2[0]['path']
+        print('find2 is not none')
+
+
+    if find3:
+        result3 = find3[0]['path']
+        print('find3 is not none')
+
+
+    print(result1,result2,result3)
     
-    list1 = [find1[0]['path'], find2[0]['path'], find3[0]['path']]
-    
-    return jsonify({'result':'success','words': list1})
+    return jsonify({'result':'success','words': [result1,result2,result3]})
 
 
 @app.route('/poster')

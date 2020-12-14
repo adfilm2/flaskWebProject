@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>The Future is Women</title>
-
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/poster.css') }}">
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <!-- html2canvas -->
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <!-- jquery mobile -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-    <script src="../static/js/touch-punch.js"></script>
-    <script src="../static/js/setting.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>The Future is Women</title>
+    
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+    
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/poster.css') }}">
+    
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+        <!-- html2canvas -->
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <!-- jquery mobile -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+        <script src="../static/js/touch-punch.js"></script>
+        <script src="../static/js/setting.js"></script>
+    </head>
 
 <body>
-    
+
 
     <div class="container">
         <img id="menu" src="../static/others/menu.png">
@@ -44,7 +44,7 @@
                 <div id="canvas-user">
                     <img id="user">
                 </div>
-                
+
                 <img id="liquid-img">
                 <img id="canvas-img">
 
@@ -67,8 +67,9 @@
 
         $(document).ready(function () {
             console.log($('#canvas').attr('width'))
-            var h = $('#canvas').width() * 600/415
-            $('#canvas').attr('height',h+'px')
+            var h = $('#canvas').width() * 600 / 415
+            $('#canvas').height(h)
+            
 
             let imgcolor = sessionStorage.getItem('color')
             $('#canvas-img').attr('src', '../static/poster/' + imgcolor + '.png')
@@ -83,10 +84,16 @@
             obj += "<div class ='word'>" + sessionStorage.word3 + "</div>"
 
             $('#canvas-word').append(obj)
-            if(sessionStorage.getItem('img-src')!= ""){
+            if (sessionStorage.getItem('img-src') != "") {
                 $('#user').attr('src', sessionStorage.getItem('img-src'))
             }
-           
+
+
+            $('.ui-icon-gripsmall-diagonal-se').addClass('ui-icon-arrowthick-2-se-nw').removeClass('ui-icon-gripsmall-diagonal-se')
+
+
+
+
 
 
 
@@ -109,13 +116,13 @@
         });
 
         $('#save').click(function () {
-            
+            window.scrollTo(0,0)
             capture($('#canvas'))
         })
 
         function capture(div) {
-            html2canvas(div[0],{scale:1.2}).then(function (canvas) {
-                
+            html2canvas(div[0]).then(function (canvas) {
+
                 var image = canvas.toDataURL() //오리지날
                 let name = sessionStorage.name
                 downloadURI(image, "future-" + name + ".png")
@@ -131,29 +138,30 @@
 
         $('#archive').click(function () {
             var image = null
-            html2canvas($('#canvas')[0],{scale:1.5}).then(function (canvas) {
+            window.scrollTo(0,0)
+            html2canvas($('#canvas')[0], { scale: 1.3 }).then(function (canvas) {
                 image = canvas.toDataURL()
                 console.log(image)
 
                 $.ajax({
-                type: 'POST',
-                url: '/poster/archive',
-                data: { 'poster': image },
-                success: function (response) {
-                    if (response["result"] == "success") {
+                    type: 'POST',
+                    url: '/poster/archive',
+                    data: { 'poster': image },
+                    success: function (response) {
+                        if (response["result"] == "success") {
 
-                        location.href = '/home'
+                            location.href = '/home'
+                        }
                     }
-                }
 
-            });
+                });
             })
 
-            
+
         })
 
-        $(document).on('click','#menu',function(){
-            location.href="/menu"
+        $(document).on('click', '#menu', function () {
+            location.href = "/menu"
         })
 
 

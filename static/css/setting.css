@@ -44,7 +44,7 @@ body{
     top: 20px;
     z-index: 20;
     width: 60px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 #logo:hover{
@@ -56,16 +56,16 @@ body{
     position: fixed;
     float: right;
     right: 10px;
-    top: 10px;
+    top: 15px;
     z-index: 20;
     width: 111px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 #menu:hover{
     transform: scale(1.1);
     filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5)) ;
 }
-
+input:focus {outline:none;}
 @media (max-width: 768px){
     #menu{ width: 78px; }
     #logo{ width: 48px; }

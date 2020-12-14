@@ -58,30 +58,30 @@
             $('#menu-finger').removeClass()
         })
 
-        $(".menubtn").on('hover',function () {
+        $(".menubtn").on('click',function () {
             
             switch ($(this).attr('id')) {
                 case "home":
-                    $('#menu-finger').addClass('home')
+                    
                     setTimeout(function () {
                         location.href = "/home"
                     }, 70);
                     break
                 case "about":
-                    $('#menu-finger').addClass('about')
+                    
                     setTimeout(function () {
                         location.href = "/about"
                     }, 70);
                     
                     break
                 case "make":
-                    $('#menu-finger').addClass('make')
+                    
                     setTimeout(function () {
                         location.href = "/intro"
                     }, 70);
                     break
                 case "share":
-                    $('#menu-finger').addClass('share')
+                    
                     setTimeout(function () {
                         location.href = "/share"
                     }, 70);

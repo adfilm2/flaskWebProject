@@ -15,8 +15,8 @@ body{
     align-items: center;
 }
 .container{
-    
-    margin-left: 150px;
+    max-width: 500px;
+    margin-left: 15%;
     width: 35%;
     position: relative;
 }
@@ -77,9 +77,9 @@ body{
 
 #menu-finger{
     position: absolute;
-    right: 20%;
-    transition: all ease-in 0.07s;
-    -webkit-transition: all ease-in 0.07s;
+    right: 25%;
+    transition: all ease 0.07s;
+    -webkit-transition: all ease 0.07s;
 
 }
 

@@ -8,10 +8,10 @@
 import pymongo
 from pymongo import MongoClient
 
-ip ='mongodb://antitest:anti1234test@54.180.85.88'
+ip ='mongodb://anti:anti1234test@15.164.50.153'
 port = 27017
 
-client = pymongo.MongoClient('localhost', port)
+client = pymongo.MongoClient(ip, port)
 db = client.anti
 
 
