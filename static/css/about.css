@@ -47,8 +47,8 @@ body{
 h1{
     font-family: 'digestive';
     font-size: 100px;
+    font-weight: 100;
     margin-bottom: 5px;
-
 }
 
 
@@ -56,10 +56,8 @@ h1{
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;
-    
 }
 p{
-    
     text-align: left;
 }
 
@@ -67,7 +65,8 @@ p{
 #hand1{
     width: 25%;
     display: block;
-    float: right;
+    min-width: 300px;
+    margin-left: auto;
     top: 50%;
     right: 0;
 }
@@ -75,20 +74,25 @@ p{
 #hand2{
     width: 35%;
     display: block;
+    min-width: 300px;
     margin-top: 30px;
-    float: left;
-    position: absolute;
-    left: 0;
+    margin-right: auto;
+    display: block;
+    
+    
 }
 #eng{
-    margin-top: 200px;
+    margin-top: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 27px;
+    line-height: 35px;
 }
 #kor{
-    margin-top: 350px;
+    margin-top: 30px;
     font-family: 'KoPub Dotum';
-    font-size: 20px;
+    font-size: 28px;
+    line-height: 48px;
+    font-weight: 400;
     
 }
 
@@ -103,10 +107,11 @@ p{
     align-items: center;
 }
 #fingers{
-    width: 70%;
+    width: 100%;
+    max-width: 460px;
 }
 .bottom h1{
-    font-size: 60px;
+    font-size: 3rem;
     
 }
 #star{
@@ -134,11 +139,11 @@ p{
 
 @media (max-width: 768px){
     #about{ display: none;}
-    h1{
+    #title{
         margin-top: 110px;
-        font-size: 40px;
+        width: 90%;
     }
-    #hand1{ width: 40%;}
+    #hand1{ width: 40%; min-width: 100px; margin-top: 20px;}
     #hand2{ width: 50%; margin-top: 0;}
     .container{
         width: 84%;
@@ -146,14 +151,16 @@ p{
         margin-right: 8%;
     }
 
-    #eng{ margin-top: 100px; font-size: 17px;}
-    #kor{ margin-top: 150px; font-size: 17px;}
+    #eng{ margin-top: 10px; font-size: 18px;
+        line-height: 26px;}
+    #kor{ margin-top: 40px; font-size: 17px;
+        line-height: 29px;}
     #fingers{ width: 100%; }
     .bottom{
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
+        width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
     }
-    .bottom h1{font-size: 30px;}
+    
     .mob{ visibility: hidden;}
 }
