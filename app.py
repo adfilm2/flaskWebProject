@@ -76,18 +76,18 @@ def submit():
     find2 = list(db.wannabe.find({"word":recword2}))
     find3 = list(db.wannabe.find({"word":recword3}))
 
-    print(find1[0]['path'] + "+" + find2[0]['path'] + "+" + find3[0]['path'])
+    # print(find1[0]['path'] + "+" + find2[0]['path'] + "+" + find3[0]['path'])
 
-    if not find1[0]['path']:
+    if not find1:
         find1.insert(0,{'path':'../'})
     else:
         pass
-    if not find2[0]['path']:
+    if not find2:
         find2.insert(0,{'path':'../'})
     else:
         pass
 
-    if not find3[0]['path']:
+    if not find3:
         find3.insert(0,{'path':'../'})
     else:
         pass

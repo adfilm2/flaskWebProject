@@ -32,11 +32,25 @@ h1{
     flex: auto;
     flex-wrap: wrap;
     justify-content: center;
+    transition: all ease-in 0.1s;
+    -webkit-transition: all ease-in 0.1s;
 }
 .poster{
     width: 220px ;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
     margin-bottom: 30px;
+    transition: all ease-in 0.1s;
+    -webkit-transition: all ease-in 0.1s;
+}
+
+.poster:hover{
+    transform: scale(1.2);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
+}
+
+#poster-box div:hover{
+    transform: scale(1.05);
+    z-index: 100;
 }
 
 #modal-poster{

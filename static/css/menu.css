@@ -29,6 +29,10 @@ body{
     right: 30px;
 }
 
+#no:hover{
+    filter: invert(100%) sepia(1%) saturate(11%) hue-rotate(312deg) brightness(103%) contrast(100%);
+}
+
 #home{
     width: 70%;
 }
@@ -73,7 +77,10 @@ body{
 
 #menu-finger{
     position: absolute;
-    right: 20%
+    right: 20%;
+    transition: all ease-in 0.07s;
+    -webkit-transition: all ease-in 0.07s;
+
 }
 
 @media (max-width: 768px){

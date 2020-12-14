@@ -36,10 +36,29 @@
     <script>
         $(".menubtn").hover(function(){
             $(this).attr("src", "../static/menu/" + $(this).attr('id') + "_bl.png")
+        
+        
+            switch ($(this).attr('id')) {
+                case "home":
+                    $('#menu-finger').addClass('home')
+                    break
+                case "about":
+                    $('#menu-finger').addClass('about')
+                    break
+                case "make":
+                    $('#menu-finger').addClass('make')
+                    break
+                case "share":
+                    $('#menu-finger').addClass('share')
+                    break
+            }
+        
         },function(){
             $(this).attr("src", "../static/menu/" + $(this).attr('id') + ".png")
+            $('#menu-finger').removeClass()
         })
-        $(".menubtn").click(function () {
+
+        $(".menubtn").on('hover',function () {
             
             switch ($(this).attr('id')) {
                 case "home":

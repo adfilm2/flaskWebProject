@@ -4,7 +4,6 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
@@ -24,7 +23,7 @@
         <img class="help" src="../static/question/q3help.png">
         <div class="textdiv">
             <input id='1' type="text" placeholder="TEXT 입력">
-            <img class="lense"src="../static/question/lense.png">
+            <img class="lense" src="../static/question/lense.png">
         </div>
         <div class="textdiv">
             <input id='2' type="text" placeholder="TEXT 입력">
@@ -38,13 +37,15 @@
             <img class="finger" onclick="history.back()" src="../static/question/left.png">
             <img class="finger" id="next" src="../static/question/right.png">
         </div>
-        <div id="back"></div>
+        <div id="back">
+        </div>
         <div id="modal">
             <img id='no' src="../static/question/no.png">
             <h1>SELECT ONE</h1>
             <p>원하는 형용사를 선택해 주세요.</p>
             <div id='modal-container'></div>
         </div>
+
     </div>
 
 
@@ -52,8 +53,7 @@
 
 
     <script>
-        var nowInput = ""
-
+        
 
         $.ajax({
             type: 'GET',
@@ -80,48 +80,61 @@
         });
 
 
+        $(document).ready(function () {
 
-        $('.textdiv > img').click(function () {
-            var thisId = $(this).siblings('input').attr('id')
+            //lense click
+            $('.textdiv > img').click(function () {
+                var thisId = $(this).siblings('input').attr('id')
 
-            $('.words').removeClass("clicked")
-            $("#modal").attr('name', thisId)
-            $("#modal, #back").fadeIn(300)
-            $("#modal").css('display', 'inline')
+                $('.words').removeClass("clicked")
+                $("#modal").attr('name', thisId)
+                $("#modal, #back").fadeIn(300)
+                $("#modal").css('display', 'inline')
+
+            });
+            // //modal word hover
+            // $('.word-text').hover(function () {
+            //     $(this).parent('div').addClass('clicked')
+            // }, function () {
+            //     $(this).parent('div').removeClass('clicked')
+            // });
+
+            //modal word click
+            $('.word-text').on('click',function () {
+                var inputNum = $("#modal").attr('name')
+                var selected = $(this).text()
+                console.log("clicked " + selected + " in " + inputNum)
+
+                
+
+                dissmissModal()
+                $('#' + inputNum).val(selected)
+            })
+
+
+            //modal 끄기
+            $('#no,#back').on('click',function () {
+                dissmissModal()
+            })
+
+
+
+
+
 
         })
 
 
 
-        function dissmissModal() {
-            $("#modal,#back").fadeOut(300)
-        }
 
-
-
-        $(document).on('click', '.word-text', function () {
-
-            var inputNum = $("#modal").attr('name')
-            var selected = $(this).text()
-            console.log("clicked " + selected + " in " + inputNum)
-
-            $(this).parent('div').addClass('clicked')
-
-            dissmissModal()
-            $('#' + inputNum).val(selected)
-        })
-
-        $(document).on('click', '#no, #back', function () {
-            dissmissModal()
-        })
 
         $(document).on('click', '#next', function () {
 
-            
+
             sessionStorage.word1 = capitalize($('#1').val())
             sessionStorage.word2 = capitalize($('#2').val())
             sessionStorage.word3 = capitalize($('#3').val())
-            
+
 
             if (sessionStorage.word1 || sessionStorage.word2 || sessionStorage.word3) {
                 $.ajax({
@@ -146,16 +159,18 @@
             } else {
                 alert('키워드를 한 개 이상 입력하세요.')
             }
-            
+
 
 
         })
 
         function capitalize(str) {
-                return str.charAt(0).toUpperCase() + str.slice(1);
-            }
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
 
-
+        function dissmissModal() {
+            $("#modal,#back").fadeOut(300)
+        }
 
 
 

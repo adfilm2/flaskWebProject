@@ -146,7 +146,7 @@ body{
     transition: all 0.3s ease;
 }
 .btn:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5)) ;
 }
 .m-size {
