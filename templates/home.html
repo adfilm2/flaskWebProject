@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Title</title>
@@ -34,7 +35,7 @@
                     let list = response['list'];
                     console.log(list)
                     var object = "";
-                    for (var i = list.length-1; i >= 0; i--) {
+                    for (var i = 0; i < list.length; i++) {
                         object += "<div><img class='poster'src ='";
                         object += list[i]['poster'];
                         if (i % 2 == 0) {
@@ -63,6 +64,7 @@
             }, 200)
         })
 
+        
         $(document).on('click',".container",function(){
             $('#modal-poster').animate({
                 opacity:0

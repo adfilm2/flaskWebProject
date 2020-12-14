@@ -23,15 +23,15 @@
         <img class="help" src="../static/question/q3help.png">
         <div class="textdiv">
             <input id='1' type="text" placeholder="TEXT 입력">
-            <img src="../static/question/lense.png">
+            <img class="lense"src="../static/question/lense.png">
         </div>
         <div class="textdiv">
             <input id='2' type="text" placeholder="TEXT 입력">
-            <img src="../static/question/lense.png">
+            <img class="lense" src="../static/question/lense.png">
         </div>
         <div class="textdiv">
             <input id='3' type="text" placeholder="TEXT 입력">
-            <img src="../static/question/lense.png">
+            <img class="lense" src="../static/question/lense.png">
         </div>
         <div id='bottom-container'>
             <img class="finger" onclick="history.back()" src="../static/question/left.png">
@@ -141,12 +141,11 @@
                         }
                     }
                 })
-
-
+                location.href = "/q4"
             } else {
                 alert('키워드를 한 개 이상 입력하세요.')
             }
-            location.href = "/q4"
+            
 
 
         })

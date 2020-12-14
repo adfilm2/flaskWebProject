@@ -1,4 +1,6 @@
-
+body{
+    overflow: hidden;
+}
 video{
     position: absolute;
     text-align: center;
@@ -9,20 +11,17 @@ video{
     overflow: hidden;
 }
 
-#logo{
-    max-width: 20px;
-
-}
-
-
-.title {
-    color: red;
-}
 
 #startBtn{
-    
-    width: 110px;
+    width: 100px;
     margin: auto;
+    transition: all ease 1s;
+}
+#startBtn:hover{
+    transform: scale(1.2);
+}
+#startBtn:active{
+    transform: scale(3);
 }
 .container{
     width: 100%;

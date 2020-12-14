@@ -18,12 +18,18 @@ body{
 }
 .q1back{
     background-image: url('../back/Q1back.png');
+    overflow: hidden;
 }
 .q2back{
-    background-image: url('../back/Q2back.png');    
+    background-image: url('../back/Q2back.png');   
+    overflow: hidden; 
 }
 .q3back{
     background-image: url('../back/Q3back.png');
+}
+
+.q4back{
+    background-image: url('../back/Q4back.png');
 }
 /* 공통 */
 
@@ -85,11 +91,17 @@ h1{
     vertical-align: middle;
     background-color: white;
 }
-.textdiv  img {
+.lense {
     width: 1em;
     margin-left: 10px;
-    vertical-align: middle
+    vertical-align: middle;
+    transition: all 0.3s ease;
 }
+.lense:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5)) ;
+}
+
 #textdiv1{
     margin-top: 100px;
 }
@@ -111,7 +123,7 @@ input[type="file"]{
 }
 .help{ 
     width: 300px;
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
 }
 
 
@@ -119,9 +131,23 @@ input[type="file"]{
     width: 180px;
     cursor: pointer;
     margin: 30px;
+    transition: all 0.3s ease;
+}
+
+.finger:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5)) ;
 }
 .skip{ 
     width: 130px;
+}
+
+#file-img{
+    transition: all 0.3s ease;
+}
+#file-img:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5)) ;
 }
 
 #finishBtn{
@@ -223,8 +249,19 @@ input[type="file"]{
     align-items: center;
     margin: 0 auto;
 }
+.color{
 
-
+    transition: all 0.3s ease;
+}
+.color:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5)) ;
+}
+@media (max-width: 1000px){
+    h1{margin:0;}
+    #q{margin-top: 1.5em;}
+    .help{margin-bottom: 1em;}
+}
 @media (max-width: 768px) {
     #modal {
         position: fixed;

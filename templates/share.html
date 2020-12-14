@@ -42,9 +42,9 @@
                     let list = response['list'];
                     var object = "";
                     for (var i = list.length - 1; i >= 0; i--) {
-                        object += "<div class='bubble'> <div class='bubble-text'>";
+                        object += "<div class='bubble'> <div class='bubble-text'><div>";
                         object += list[i]['story'];
-                        object += "</div></div>";
+                        object += "</div></div></div>";
                     }
                     $("#bubbles").append(object);
 

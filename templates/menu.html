@@ -33,8 +33,13 @@
 
 
     <script>
-        $(".menubtn").click(function () {
+        $(".menubtn").hover(function(){
             $(this).attr("src", "../static/menu/" + $(this).attr('id') + "_bl.png")
+        },function(){
+            $(this).attr("src", "../static/menu/" + $(this).attr('id') + ".png")
+        })
+        $(".menubtn").click(function () {
+            
             switch ($(this).attr('id')) {
                 case "home":
                     $('#menu-finger').addClass('home')

@@ -56,7 +56,7 @@ def q3():
 @app.route('/q3/list', methods= ['GET'])
 def getWord():
     print('getWord()')
-    star = list(db.wannabe.find({},{'_id':False, 'word':True}))
+    star = list(db.wordEx.find({},{'_id':False, 'word':True}))
     
     return jsonify({'result': 'success', 'list': star})
 
@@ -70,19 +70,29 @@ def submit():
     recword1 = request.form['word1']
     recword2 = request.form['word2']
     recword3 = request.form['word3']
+    print(recword1+"+"+recword2+"+"+recword3)
 
     find1 = list(db.wannabe.find({"word":recword1}))    
     find2 = list(db.wannabe.find({"word":recword2}))
     find3 = list(db.wannabe.find({"word":recword3}))
 
-    if not find1:
+    print(find1[0]['path'] + "+" + find2[0]['path'] + "+" + find3[0]['path'])
+
+    if not find1[0]['path']:
         find1.insert(0,{'path':'../'})
-    if not find2:
+    else:
+        pass
+    if not find2[0]['path']:
         find2.insert(0,{'path':'../'})
-    if not find3:
+    else:
+        pass
+
+    if not find3[0]['path']:
         find3.insert(0,{'path':'../'})
+    else:
+        pass
     
-    list1 = [ find1[0]['path'], find2[0]['path'], find3[0]['path'] ]
+    list1 = [find1[0]['path'], find2[0]['path'], find3[0]['path']]
     
     return jsonify({'result':'success','words': list1})
 

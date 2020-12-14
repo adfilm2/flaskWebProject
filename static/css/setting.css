@@ -15,7 +15,7 @@ body{
     url('../font/digestivedemo-four.woff') format('woff'),
     url('../font/digestivedemo-four.woff2') format('woff2');
   
-    font-weight: normal;
+    font-weight: 100;
     font-style: normal;
 
 }
@@ -40,10 +40,16 @@ body{
 #logo{
     position: fixed;
     float: left;
-    left: 10px;
-    top: 10px;
+    left: 20px;
+    top: 20px;
     z-index: 20;
-    width: 80px;
+    width: 60px;
+    transition: all 0.3s ease;
+}
+
+#logo:hover{
+    transform: scale(1.2);
+    filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5)) ;
 }
 
 #menu{
@@ -53,6 +59,11 @@ body{
     top: 10px;
     z-index: 20;
     width: 111px;
+    transition: all 0.3s ease;
+}
+#menu:hover{
+    transform: scale(1.2);
+    filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5)) ;
 }
 
 @media (max-width: 768px){

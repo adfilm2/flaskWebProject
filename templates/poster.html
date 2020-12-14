@@ -65,7 +65,10 @@
 
 
         $(document).ready(function () {
-            console.log("dkdhk")
+            console.log($('#canvas').attr('width'))
+            var h = $('#canvas').width() * 600/415
+            $('#canvas').attr('height',h+'px')
+
             let imgcolor = sessionStorage.getItem('color')
             $('#canvas-img').attr('src', '../static/poster/' + imgcolor + '.png')
             let num = Math.floor(Math.random() * 24) + 1
@@ -100,7 +103,8 @@
         });
 
         $('.resizable').resizable({
-            containment: "#canvas"
+            containment: "#canvas",
+            aspectRatio: true
         });
 
         $('#save').click(function () {
