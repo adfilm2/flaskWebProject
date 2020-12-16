@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="../static/css/home5.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../static/js/setting.js"></script>
-    <title>Title</title>
+    <title>Anti Anti Aging</title>
+    <link rel="shortcut icon" href="../static/others/anti.png" type="image/x-icon">
+
 </head>
 
 <body>
@@ -17,11 +18,16 @@
         <a href="/home"><img id="logo" src="../static/others/logo.png"></a>
         <a href="/menu"><img id="menu" src="../static/others/menu.png"></a>
         <img id='title' src="../static/others/hometitle.png">
+        <div id="div">
+            <img id="home-help" src="../static/others/home-help.png">
+            <img id="home-text" src="../static/others/home-text.png">
+        </div>
         
+
         <div id="poster-box">
         </div>
         <div><img id="modal-poster"></div>
-        
+
     </div>
 
     <script>
@@ -51,30 +57,33 @@
 
         })
 
-        $(document).on('click',".poster",function(e){
+        $(document).on('click', ".poster", function (e) {
             e.stopPropagation();
 
-            $('#modal-poster').attr('src',$(this).attr('src')).css('display','inline')
-            
+            $('#modal-poster').attr('src', $(this).attr('src')).css('display', 'inline')
+
             $('.poster').animate({
                 opacity: 0.33
             }, 200)
             $('#modal-poster').animate({
                 opacity: 1
-                
+
             }, 200)
         })
 
-        
-        $(document).on('click',".container",function(){
+
+        $(document).on('click', ".container", function () {
             $('#modal-poster').animate({
-                opacity:0
-            },200)
-            $('#modal-poster').css('display','none')
+                opacity: 0
+            }, 200)
+            $('#modal-poster').css('display', 'none')
             $('.poster').animate({
                 opacity: 1
             }, 200)
         })
+
+        
+
     </script>
 </body>
 

@@ -3,7 +3,7 @@ body{
     background-attachment: fixed;
     background-image: url('../back/posterback.png');
     background-size: cover;
-    
+    overflow-x: hidden;
     font-size: 34px;
     line-height: 1.32;
     
@@ -27,8 +27,8 @@ body{
 }
 
 #title{
-    width: 800px;
-    
+    width: 600px;
+    margin-top: 3%;
 }
 
 .show{
@@ -75,7 +75,7 @@ p{
     width: 35%;
     display: block;
     min-width: 300px;
-    margin-top: 30px;
+    margin-top: 12%;
     margin-right: auto;
     display: block;
     
@@ -83,15 +83,15 @@ p{
 }
 #eng{
     margin-top: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 27px;
+    font-family: 'arialMT';
+    font-size: 25px;
     line-height: 35px;
 }
 #kor{
-    margin-top: 30px;
+    margin-top: 12%;
     font-family: 'KoPub Dotum';
-    font-size: 28px;
-    line-height: 48px;
+    font-size: 21px;
+    line-height: 38px;
     font-weight: 400;
     
 }
@@ -108,10 +108,10 @@ p{
 }
 #fingers{
     width: 100%;
-    max-width: 460px;
+    max-width: 650px;
 }
 .bottom h1{
-    font-size: 3rem;
+    font-size: 2em;
     
 }
 #star{
@@ -134,10 +134,16 @@ p{
     width: 140px;
 }
 
+@media(max-width: 768px){
+    .container {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
 
 
-
-@media (max-width: 768px){
+@media (max-width: 500px){
     #about{ display: none;}
     #title{
         margin-top: 110px;

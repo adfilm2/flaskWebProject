@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../static/js/setting.js"></script>
-    <title>Title</title>
+    <title>Anti Anti Aging</title>
+    <link rel="shortcut icon" href="../static/others/anti.png" type="image/x-icon">
+
 
 </head>
 
@@ -133,29 +135,74 @@
             sessionStorage.word2 = capitalize($('#2').val())
             sessionStorage.word3 = capitalize($('#3').val())
 
+            let words = new Array(sessionStorage.word1, sessionStorage.word2, sessionStorage.word3)
+            // var rand = new Array(3)
+            // for(var i =0; i<3;i++){
+            //     if(words[i]!=""){
+
+            //         console.log(Math.random())
+            //         var r = Math.random
+            //         console.log(Math.floor(r*264))
+            //         console.log(rand[i])
+            //         rand[i] = Math.floor(r)
+            //     }else{
+            //         rand[i] = 0
+            //     }
+            // }
+
 
             if (sessionStorage.word1 || sessionStorage.word2 || sessionStorage.word3) {
+
                 $.ajax({
                     type: 'POST',
                     url: '/submit',
-                    data: { 'word1': sessionStorage.word1, 'word2': sessionStorage.word2, 'word3': sessionStorage.word3 },
+                    async: false,
+                    data: { 'words': words },
                     success: function (response) {
                         if (response["result"] == "success") {
 
-                            words = response['words']
-                            console.log(words)
-                            console.log(typeof (words))
-                            console.log(";;" + words[0] + words[1] + words[2])
-                            sessionStorage.setItem('path1', words[0])
-                            sessionStorage.setItem('path2', words[1])
-                            sessionStorage.setItem('path3', words[2])
-                            setTimeout(function () {
-                                location.href = "/q4"
-                            }, 1000);
+                            word = response['words']
+
+                            if (word[0] != "") {
+                                sessionStorage.setItem('path1', word[0])
+                            } else if (sessionStorage.getItem('word1') != "") {
+                                var rand = Math.floor(Math.random() * 14) + 1
+                                sessionStorage.setItem('path1', '../static/mapping/' + rand + '.png')
+                            } else {
+                                sessionStorage.setItem('path1', "")
+                            }
+
+                            if (word[1] != "") {
+                                sessionStorage.setItem('path2', word[1])
+                            } else if (sessionStorage.getItem('word2') != "") {
+                                var rand = Math.floor(Math.random() * 14) + 1
+                                sessionStorage.setItem('path2', '../static/mapping/' + rand + '.png')
+                            } else {
+                                sessionStorage.setItem('path2', "")
+                            }
+
+                            if (word[2] != "") {
+                                sessionStorage.setItem('path3', word[2])
+                            } else if (sessionStorage.getItem('word3') != "") {
+                                var rand = Math.floor(Math.random() * 14) + 1
+                                sessionStorage.setItem('path3', '../static/mapping/' + rand + '.png')
+                            } else {
+                                sessionStorage.setItem('path3', "")
+                            }
+
+
+
+
 
                         }
                     }
                 })
+                setTimeout(function () {
+                    location.href = "/q4"
+                }, 1500);
+
+                
+
 
             } else {
                 alert('키워드를 한 개 이상 입력하세요.')
@@ -166,7 +213,7 @@
         })
 
         function capitalize(str) {
-            return str.charAt(0).toUpperCase() + str.slice(1);
+            return str.charAt(0).toUpperCase() + str.slice(1)
         }
 
         function dissmissModal() {

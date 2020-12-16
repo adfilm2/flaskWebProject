@@ -23,6 +23,13 @@ video{
     transform: scale(1.2);
     filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5)) ;
 }
+#enter-help{
+    width: 300px;
+    position: fixed;
+    bottom: 30px;
+    left: calC(50%- 150px);
+
+}
 
 .container{
     width: 100%;

@@ -1,19 +1,30 @@
-html,body{
-    cursor: url(../others/pointer.png) 16 16,auto;
+html,body,a,img{
+    cursor: url(../others/pointer2.png) 0 0,auto;
+    
 }
+
 
 body{
     padding: 0;
     margin: 0;
+    opacity: 0;
+    transition: opacity .65s .15s
+}
+body.reveal {
+    opacity: 1;
+    overflow-y: auto
+}
+
+body.hidden {
+    opacity: 0
 }
 
 
 @font-face {
     font-family: "digestive";
-    src: url('../font/DigestiveDemo-four.eot') format('eot'),
-    url('../font/DigestiveDemo-Four.otf') format('otf'),
-    url('../font/digestivedemo-four.woff') format('woff'),
-    url('../font/digestivedemo-four.woff2') format('woff2');
+    src: url('../font/Digestive-four.eot') format('eot'),
+    url('../font/Digestive-four.woff') format('woff'),
+    url('../font/Digestive-four.woff2') format('woff2');
   
     font-weight: 100;
     font-style: normal;
@@ -21,21 +32,29 @@ body{
 }
 @font-face{
     font-family: "digestive-2";
-    src: url('../font/DigestiveDemo-two.eot') format('eot'),
-    url('../font/DigestiveDemo-two.woff') format('woff'),
-    url('../font/DigestiveDemo-two.woff2') format('woff2')
+    src: url('../font/Digestive-two.eot') format('eot'),
+    url('../font/Digestive-two.woff') format('woff'),
+    url('../font/Digestive-two.woff2') format('woff2')
 
 }
 @font-face{
     font-family: 'kopub dotum';
     src: url('../font/KoPubDotumMedium.eot') format('eot'),
-    url('../font/KoPubDotumMedium.woff') format('woff')
+    url('../font/KoPubDotumMedium.woff') format('woff');
 }
 @font-face{
     font-family: 'futura';
     src: url('../font/futura.eot') format('eot'),
-    url('../font/Futura-Bold.woff') format('woff2')
+    url('../font/Futura-Bold.woff') format('woff2');
 }
+@font-face{
+    font-family: 'arialMT';
+    src: url('../font/arialmt.eot') format('eot'),
+    url('../font/ArialMT.woff') format('woff'),
+    url('../font/arialmt.woff2') format('woff2');
+    font-weight: 100;
+}
+
 
 #logo{
     position: fixed;
