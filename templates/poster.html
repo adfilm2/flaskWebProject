@@ -11,7 +11,7 @@
 
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/poster.css') }}">
+    <link rel="stylesheet" href="../static/css/poster.css?v=9">
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -22,7 +22,7 @@
     <!-- jquery mobile -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     <script src="../static/js/touch-punch.js"></script>
-    <script src="../static/js/setting.js"></script>
+    <script src="../static/js/setting.js?v=3"></script>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                 <div id="liquid-div">
                     <img id="liquid-img">
                 </div>
-                
+
                 <img id="canvas-img">
                 <div id="canvas-name">
                     <img src="../static/poster/star.png">
@@ -52,16 +52,22 @@
                     <img id="user">
                 </div>
 
-                
+
 
             </div>
         </div>
 
 
         <div class="button-tab">
+            <img id="save-mobile" class="btn" src="../static/question/download.png">
             <img id="save" class="btn" src="../static/question/download.png">
             <img id="archive" class="btn" src="../static/question/archive.png">
         </div>
+    </div>
+
+
+    <div id="poster-modal">
+        <img id="poster">
     </div>
 
 
@@ -69,9 +75,22 @@
 
 
     <script>
+        $(document).bind('keydown', function (e) {
+            if (e.keyCode == 123) {
+                e.preventDefault();
+                e.returnValue = false;
+            }
+        });
 
+        $('#poster, body').bind("contextmenu", function (e) {
+            return true;
+        });
 
         $(document).ready(function () {
+
+            document.body.classList.add("reveal");
+
+
             console.log($('#canvas').attr('width'))
             var h = $('#canvas').width() * 600 / 415
             $('#canvas').height(h)
@@ -94,9 +113,7 @@
             if (sessionStorage.path3 == "") {
                 $('#img3').parent('div').css('visibility', 'hidden')
             }
-            if (sessionStorage.user == "") {
-                $('#user').css('visibility', 'hidden')
-            }
+
             var obj = "<div class ='word'>" + sessionStorage.word1 + "</div>"
             obj += "<div class ='word'>" + sessionStorage.word2 + "</div>"
             obj += "<div class ='word'>" + sessionStorage.word3 + "</div>"
@@ -104,16 +121,19 @@
             $('#canvas-word').append(obj)
             if (sessionStorage.getItem('img-src') != "") {
                 $('#user').attr('src', sessionStorage.getItem('img-src'))
-            }else{
-                if($('#user').width() > $('#user').height()){
-                    $('#user').css('margin')
-                }else if ($('#user').width() < $('#user').height()){
 
+                if ($('#user').width() > $('#user').height()) {
+                    $('#user').css('height', '100%')
+                } else if ($('#user').width() < $('#user').height()) {
+                    $('#user').css('width', '100%')
                 }
+
             }
-
-
             $('.ui-icon-gripsmall-diagonal-se').addClass('ui-icon-arrowthick-2-se-nw').removeClass('ui-icon-gripsmall-diagonal-se')
+            $('.ui-icon-arrowthick-2-se-nw, .ui-icon-gripsmall-diagonal-se').attr('data-html2canvas-ignore', 'true')
+
+            $(".btn").height(167 * $(".btn").width() / 381)
+
 
 
 
@@ -149,14 +169,39 @@
             capture($('#canvas'))
         })
 
+        $('#save-mobile').click(function () {
+            window.scrollTo(0, 0)
+            capture_mobile($('#canvas'))
+
+        })
+
+        $('#poster-modal, #poster').bind("contextmenu", function (e) {
+            return true;
+        });
+        $('#poster-modal, #poster').contextmenu(true)
+
+        $('#poster-modal').click(function () {
+            $('#poster-modal').attr('display', 'none')
+        })
+
+        function capture_mobile(div) {
+            html2canvas(div[0]).then(function (canvas) {
+                var image = canvas.toDataURL()
+                $('#poster').attr('src', image)
+                $('#poster-modal').css('display', "block")
+            })
+        }
+
+
         function capture(div) {
             html2canvas(div[0]).then(function (canvas) {
 
-                var image = canvas.toDataURL() //오리지날
+                var image = canvas.toDataURL()
                 let name = sessionStorage.name
                 downloadURI(image, "future-" + name + ".png")
             })
         }
+
         function downloadURI(uri, name) {
             var link = document.createElement("a")
             link.download = name
@@ -168,8 +213,9 @@
         $('#archive').click(function () {
             var image = null
             window.scrollTo(0, 0)
-            html2canvas($('#canvas')[0], { scale: 1.1 }).then(function (canvas) {
+            html2canvas($('#canvas')[0], { scale: 1.1, useCORS: true }).then(function (canvas) {
                 image = canvas.toDataURL()
+                image.crossOrigin = "Anonymous"
                 console.log(image)
 
                 $.ajax({

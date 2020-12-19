@@ -108,7 +108,7 @@ body{
 }
 
 #user{
-    width: 100%;
+    
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%); 
     /* mix-blend-mode: luminosity; */
@@ -144,10 +144,30 @@ body{
     margin: 0 auto;
    
 }
+#save-mobile{
+    display: none;
+}
+
+#poster-modal{
+    -webkit-touch-callout: default;
+    display: none;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 12%;
+}
+#poster{
+    -webkit-touch-callout: default;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .btn{
     display: block;
     cursor: pointer;
     width: 163px;
+    height: auto;
     margin-right: auto;
     transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
@@ -212,7 +232,9 @@ body{
     #help{ width: 70%;}
     .poster-tab{ width: 90%;}
     #canvas{ width: 100%;}
-    .btn{margin-right: 0;}
+    .btn{margin-right: 0; width: 40%; margin-top: 0;}
+    #save{display: none;}
+    #save-mobile{display: inline-block;}
     .button-tab{display: flex;justify-content: center;}
 }
 

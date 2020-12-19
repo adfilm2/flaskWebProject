@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/share.css') }}">
+    <link rel="stylesheet" href="../static/css/share.css?v=7">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../static/js/setting.js"></script>
     <title>Anti Anti Aging</title>
@@ -16,24 +16,27 @@
 </head>
 
 <body>
-    
-    <div id="top">
-        <a href="/home"><img id="logo" src="../static/others/logo.png"></a>
-        <a href="/menu"><img id="menu" src="../static/others/menu.png"></a>
-    </div>
+
+
 
     <div id="container">
-        <h1>Share<br>Your Future</h1>
-        <p>당신은 어떤 할머니가 되고 싶나요?<br>당신의 이야기를 들려주세요.</p>
-        <div id='input-div'>
-            <input type="text" placeholder="TEXT 입력"> <img id="submit" src="../static/others/submit.png">
-        </div>
-        <div id="bubbles">
-        </div>
+        
 
+            <a href="/home"><img id="logo" src="../static/others/logo.png"></a>
+            <a href="/menu"><img id="menu" src="../static/others/menu.png"></a>
 
+            <h1>Share<br>Your Future</h1>
+            <p>당신은 어떤 할머니가 되고 싶나요?<br>당신의 이야기를 들려주세요.</p>
+            <div id='input-div'>
+                <input type="text" placeholder="TEXT 입력"> <img id="submit" src="../static/others/submit.png">
+            </div>
+            <div id="bubbles">
+            </div>
+
+        
     </div>
-    
+    <img id="wrap" src="../static/back/shareback.png">
+
     <script>
 
         $.ajax({
@@ -72,17 +75,20 @@
         })
         $(document).on('click', '#submit', function () {
             let myStory = $('input').val()
-            $.ajax({
-                type: 'POST',
-                url: '/share/newstory',
-                data: { 'story': myStory },
-                success: function (response) {
-                    if (response["result"] == "success") {
-                        console.log('new story uploaded')
-                        location.reload()
+            if (myStory != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '/share/newstory',
+                    data: { 'story': myStory },
+                    success: function (response) {
+                        if (response["result"] == "success") {
+                            console.log('new story uploaded')
+                            location.reload()
+                        }
                     }
-                }
-            })
+                })
+            }
+
         })
 
         $('#container').click(function (e) {

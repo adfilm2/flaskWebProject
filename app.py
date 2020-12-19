@@ -2,10 +2,11 @@ from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 
 
+
 app = Flask(__name__)
 ip ='mongodb://anti:anti1234test@15.164.50.153'
 port = 27017
-client = MongoClient('mongodb://anti:anti1234test@15.164.50.153', port)
+client = MongoClient('localhost', port)
 db = client.anti
 
 @app.route('/')
@@ -66,41 +67,63 @@ def q4():
 
 @app.route('/submit', methods= ['POST'])
 def submit():
-    print('submit')
-    recword1 = request.form['word1']
-    recword2 = request.form['word2']
-    recword3 = request.form['word3']
-    print(recword1+"+"+recword2+"+"+recword3)
+    # print('submit')
+    # recword1 = request.form['word1']
+    # recword2 = request.form['word2']
+    # recword3 = request.form['word3']
+    # print(recword1+"+"+recword2+"+"+recword3)
 
-    find1 = list(db.wannabe.find({"word":recword1}))    
-    find2 = list(db.wannabe.find({"word":recword2}))
-    find3 = list(db.wannabe.find({"word":recword3}))
-    print(find1)
-    print(find2)
-    print(find3)
+    # find1 = list(db.wannabe.find({"word":recword1}))    
+    # find2 = list(db.wannabe.find({"word":recword2}))
+    # find3 = list(db.wannabe.find({"word":recword3}))
+    # print(find1)
+    # print(find2)
+    # print(find3)
 
-    result1 = ""
-    result2 = ""
-    result3 = ""
+    # result1 = result2 = result3 = ""
 
-    if find1:
-        print('find1 is not none')
-        result1 = find1[0]['path']
-
-
-    if find2:
-        result2 = find2[0]['path']
-        print('find2 is not none')
+    # if find1:
+    #     result1 = find1[0]['path']
+    # else:
+    #     rand = random.randrange(1,243)
+    #     result1 = list(db.wannabe.find().skip(rand).limit(1))[0]['path']
 
 
-    if find3:
-        result3 = find3[0]['path']
-        print('find3 is not none')
 
 
-    print(result1,result2,result3)
+    # if find2:
+    #     result2 = find2[0]['path']
+    # else:
+    #     rand = random.randrange(1,243)
+    #     result2 = list(db.wannabe.find().skip(rand).limit(1)))[0]['path']
+
+
+
+    # if find3:
+    #     result3 = find3[0]['path']
+    # else:
+    #     rand = random.randrange(1,243)
+    #     result3 = list(db.wannabe.find().skip(rand).limit(1)))[0]['path']
+
+    ##
+    wordList = request.form.getlist('words[]')
+    # randList = request.form.getlist('rand[]')
+    print(wordList)
+    # print(randList)
+    path = []
+    for i in range(len(wordList)):
+        if wordList[i]:
+            find = list(db.wannabe.find({"word":wordList[i]}))
+            if(find):
+                path.append(find[0]['path'])
+            else:
+                path.append("")
+
+        else:
+            path.append("")
+
     
-    return jsonify({'result':'success','words': [result1,result2,result3]})
+    return jsonify({'result':'success','words': path})
 
 
 @app.route('/poster')

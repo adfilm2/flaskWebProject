@@ -17,9 +17,25 @@ db = client.anti
 
 def insert():
     # db.poster.delete_many({})
+    
     db.wannabe.delete_many({})
-    db.story.delete_many({})
+    # db.story.delete_many({})
     wordlist = [
+        {"word":"1","path":"../static/mapping/1.png"},
+        {"word":"2","path":"../static/mapping/2.png"},
+        {"word":"3","path":"../static/mapping/3.png"},
+        {"word":"4","path":"../static/mapping/4.png"},
+        {"word":"5","path":"../static/mapping/5.png"},
+        {"word":"6","path":"../static/mapping/6.png"},
+        {"word":"7","path":"../static/mapping/7.png"},
+        {"word":"8","path":"../static/mapping/8.png"},
+        {"word":"9","path":"../static/mapping/9.png"},
+        {"word":"10","path":"../static/mapping/10.png"},
+        {"word":"11","path":"../static/mapping/11.png"},
+        {"word":"12","path":"../static/mapping/12.png"},
+        {"word":"13","path":"../static/mapping/13.png"},
+        {"word":"14","path":"../static/mapping/14.png"},
+        {"word":"15","path":"../static/mapping/15.png"},
         {"word": "Loving", "path": "../static/mapping/Loving.png"},
         {"word": "Dear", "path": "../static/mapping/Loving.png"},
         {"word": "Tender", "path": "../static/mapping/Loving.png"},
@@ -243,11 +259,11 @@ def insert():
         {"word": "Receptive", "path": "../static/mapping/Open-minded.png"},
         {"word": "Free", "path": "../static/mapping/Free.png"},
         {"word": "Lots of hair", "path": "../static/mapping/Lots-of-hair.png"},
-        {"word": "Strong Minded", "path": "../static/mapping/Strong-Minded.png"},
-        {"word": "Firm", "path": "../static/mapping/Strong-Minded.png"},
-        {"word": "Resolute","path":"../static/mapping/Strong-Minded.png"},
-        {"word": "Purposeful", "path": "../static/mapping/Strong-Minded.png"},
-        {"word": "Fearless", "path": "../static/mapping/Strong-Minded.png"},
+        {"word": "Strong Minded", "path": "../static/mapping/Strong-minded.png"},
+        {"word": "Firm", "path": "../static/mapping/Strong-minded.png"},
+        {"word": "Resolute","path":"../static/mapping/Strong-minded.png"},
+        {"word": "Purposeful", "path": "../static/mapping/Strong-minded.png"},
+        {"word": "Fearless", "path": "../static/mapping/Strong-minded.png"},
         {"word": "Warm", "path": "../static/mapping/Warm.png"},
         {"word": "Balmy","path":"../static/mapping/Warm.png"},
         {"word": "Mild", "path": "../static/mapping/Warm.png"},
@@ -291,7 +307,7 @@ def insert():
         {"story": "우선은 할머니, 즉 나이든 여성에서 '여성'보다는 '나이든'에 초점을 맞추고 싶습니다. 나이가 든다는건 나 자신도 죽음에 한걸음 가까워질 뿐 아니라 가족, 친구 등 주변사람들도 하나둘 떠나간다는 의미이기도 합니다. 저는 삶을 지속하는데에 매달리지않고 얼마나 남았을지 모를 앞으로의 살날들을 하루하루 의미있게 보내는데 남은 기력을 사용하는, 나와 내 주변을 맴돌 죽음에 초연할 수 있는 그런 강인한 노인이 되길 원합니다."}
 
     ]
-    db.story.insert_many(stories)
+    # db.story.insert_many(stories)
     wordEx = [
         {"word": "Loving"},
         {"word": "Classy"},
@@ -355,7 +371,7 @@ def insert():
         {"word": "Artistic"}
 
     ]
-    db.wordEx.insert_many(wordEx)
+    # db.wordEx.insert_many(wordEx)
 
 
 
