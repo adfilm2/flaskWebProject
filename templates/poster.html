@@ -11,18 +11,18 @@
 
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}">
-    <link rel="stylesheet" href="../static/css/poster.css?v=9">
+    <link rel="stylesheet" href="../static/css/poster.css?v=14">
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- html2canvas -->
-    <!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> -->
-    <script src="../static/js/html2canvas.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- <script src="../static/js/html2canvas.js"></script> -->
     <!-- jquery mobile -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     <script src="../static/js/touch-punch.js"></script>
-    <script src="../static/js/setting.js?v=3"></script>
+    <script src="../static/js/setting.js?v=4"></script>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
 
 
         <div class="button-tab">
-            <img id="save-mobile" class="btn" src="../static/question/download.png">
+            <img id="save-mobile" onclick="savemobile()" class="btn" src="../static/question/download.png">
             <img id="save" class="btn" src="../static/question/download.png">
             <img id="archive" class="btn" src="../static/question/archive.png">
         </div>
@@ -67,6 +67,7 @@
 
 
     <div id="poster-modal">
+        <img id="save-help" src="../static/others/savehelp.png">
         <img id="poster">
     </div>
 
@@ -169,19 +170,15 @@
             capture($('#canvas'))
         })
 
-        $('#save-mobile').click(function () {
+        function savemobile() {
             window.scrollTo(0, 0)
             capture_mobile($('#canvas'))
+        }
 
-        })
 
-        $('#poster-modal, #poster').bind("contextmenu", function (e) {
-            return true;
-        });
         $('#poster-modal, #poster').contextmenu(true)
-
-        $('#poster-modal').click(function () {
-            $('#poster-modal').attr('display', 'none')
+        $('#poster,#poster-modal').click(function () {
+            $('#poster-modal').css('display', 'none')
         })
 
         function capture_mobile(div) {
@@ -210,13 +207,21 @@
             link.click()
         }
 
+        function dataURItoBlob(dataURI) {
+            var binary = atob(dataURI.split(',')[1]);
+            var array = [];
+            for (var i = 0; i < binary.length; i++) {
+                array.push(binary.charCodeAt(i));
+            }
+            return new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+        }
+
         $('#archive').click(function () {
             var image = null
             window.scrollTo(0, 0)
             html2canvas($('#canvas')[0], { scale: 1.1, useCORS: true }).then(function (canvas) {
                 image = canvas.toDataURL()
                 image.crossOrigin = "Anonymous"
-                console.log(image)
 
                 $.ajax({
                     type: 'POST',
